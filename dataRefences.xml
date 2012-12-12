@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<root>
+    <avantages>
+        <avantage>
+            <titre>Infatiguable</titre>
+            <descriptif>La détermination légendaire des Nains leur permet de supporter des fardeaux qui briseraient le dos des plus robustes des hommes.
+    Un personnage Nain calcule son seuil de Fatigue en ajoutant les valeurs d'Encombrement de tous les objets qu'il porte, puis en soustrayant à ce total sa valeur améliorée de Coeur.
+            </descriptif>
+        </avantage>
+    </avantages>
+    <vocations>
+        <vocation>
+                <titre>Chasseur de Trésor</titre>
+                <description>Ce monde a été témoin de la gloire de nombreux seigneurs Elfes et rois Nains, et leur héritage est désormais enfoui en des souterrain profonds et des grottes sombres. L'or pâle et les joyaux rutilants attendent ceux qui osent les chercher. Qu'il s'agisse d'un trésor de famille volé par des pillards gobelins ou du butin fabuleux d'un Dragon, vous avez décidé de retrouver un bien perdu, même si cela va vous demander de braver des dangers indicibles.
+                </description>           
+        </vocation>
+        <vocation>
+                <titre>Tueur</titre>
+                <description>Vous ou votre famille avez subit une terrible disparition, provoquée par quelqu'un ou quelque chose (à définir). Vous êtes devenu aventurier pour faire payer celui qui vous a causé du tort, à moins que ce soit pour renoncer à une existence que vous ne parveniez plus à apprécier. Votre voie est ardue, car ce que vous avez vécu vous pousse à vous méfier de tous.
+                </description>           
+        </vocation>
+        <vocation>
+                <titre>Protecteur</titre>
+                <description>En cette époque où les ombres se font plus profondes chaque année, vous avez juré de protéger tous ceux qui ne peuvent se défendre seuls. Souvent, cet engagement vous oblige à abandonner la civilisation pour mieux garder ses habitants de tout ce qui se tapit de l'autre côté de leurs clôtures. Vous êtes ainsi devenu un étranger aux yeux du peuple, une silhouette aussi inquiétante que ceux contre lesquels vous le protégez.
+                </description>           
+        </vocation>        
+    </vocations>
+    <peuples>
+        <peuple>
+            <nom>Bardide</nom>
+            <descriptifCourte>Humain citadin de Dale</descriptifCourte>
+            <descriptionLongue></descriptionLongue>
+        </peuple>
+        <peuple>
+            <nom>Homme sauvage des bois</nom>
+        </peuple>
+        <peuple>
+            <nom>Béornide</nom>
+        </peuple>
+        <peuple>
+            <nom>Elfe sylvains de sombre-Bois</nom>
+        </peuple>
+        <peuple>
+            <nom>Hobbit de la Comté</nom>
+        </peuple>
+        <peuple>
+            <nom>Nain du Mont-Solitaire</nom>
+            <descriptionCourte></descriptionCourte>
+            <introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et, avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son trône dans les anciennes salles.</introduction>
+            <descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses versants, au cours de longues et profondes excavations. Lampes et chandelles brûlèrent sans interruption pour éclairer leurs travaux, tandis que leur trésor gonflait au rythme de leur gloire en ces terres septentrionales.
+            </descriptionLongue>
+            <listeVocations>
+                <vocation categorie="Primaire">Chasseur de trésors</vocation>
+                <vocation categorie="Primaire">Tueur</vocation>
+                <vocation categorie="Secondaire">Protecteur</vocation>
+            </listeVocations>
+            <niveauDeVie>Riche</niveauDeVie>
+            <avantageCulturel>Infatigable</avantageCulturel>
+        </peuple>
+    </peuples>
+</root>
