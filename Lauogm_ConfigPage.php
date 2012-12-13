@@ -24,4 +24,7 @@ if (!defined('WPLAUOGM_PLUGIN_DIR'))
 if (!defined('WPLAUOGM_PLUGIN_CLASS_DIR'))
     define('WPLAUOGM_PLUGIN_CLASS_DIR', WPLAUOGM_PLUGIN_DIR . '/lauogmClass');
 
+if (!defined('WPLAUOGM_PLUGIN_DATA_DIR'))
+    define('WPLAUOGM_PLUGIN_DATA_DIR', WPLAUOGM_PLUGIN_DIR . '/dataReferences');
+
 ?>

@@ -26,8 +26,20 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-include_once 'Lauogm_ConfigPage.php';
-include_once WPLAUOGM_PLUGIN_CLASS_DIR . '/LauogmPluginOptionPageClass.php';
+require_once 'Lauogm_ConfigPage.php';
+//require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/LauogmPluginAdminPageClass.php';
+// function __autoload($class) {
+//     include 'classes/' . $class . '.class.php';
+// }
+//function my_autoloader($class) {
+//    include 'classes/' . $class . '.class.php';
+//}
+//
+//spl_autoload_register('my_autoloader');
+// Ou, en utilisant une fonction anonyme à partir de PHP 5.3.0
+spl_autoload_register(function ($class) {
+            include WPLAUOGM_PLUGIN_CLASS_DIR . '/' . $class . '.class.php';
+        });
 
 // Hook
 register_activation_hook(__FILE__, 'jal_install');
@@ -85,34 +97,36 @@ function lireFichierMessage() {
 }
 
 // Parsing de fichier XML
-function parsingXML() {
-    $dataSource = file_get_contents(plugin_dir_path(__FILE__) . 'dataRefences.xml');
+function parsingXML($dataFile, $dataRoot) {
+    $dataSource = file_get_contents(WPLAUOGM_PLUGIN_DATA_DIR . '/' . $dataFile);
     $root = new SimpleXMLElement($dataSource);
 
-    $peuples = $root->peuples;
+    $arrayResult = $root->$dataRoot;
 
-    return $peuples;
+    return $arrayResult;
 }
 
 //[lauoutilsgm]
 function lauOutilsGM_func($atts) {
 
     //require_once SMARTY_DIR . '/Smarty.class.php';
-
-//$messageDefaut = "Outils de création de personnage pour 'L'Anneau Unique' - Livre de Base (issue d'une fonction)";
+    //$messageDefaut = "Outils de création de personnage pour 'L'Anneau Unique' - Livre de Base (issue d'une fonction)";
     //$message = lireFichierMessage();
-    $peuples = parsingXML();
-    $message = "<b><u>Liste des peuples disponibles :</u></b><ul>";
-    reset($peuples);
-    //$message .= "<li>" . $peuples->peuple[0]->nom . "</li>";
-    foreach ($peuples->peuple as $peuple) {
-        $message .= "<li>" . $peuple->nom . "</li>";
-    }
-//    while (list($key, $val) = each($peuples)) {
-//        $message = $message . "<li>" . $val->nom . "</li>";
-//    }
-    $message = $message . "</ul>";
+    //require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/DataReferencesClass.php';
 
+    $dataReferences = new DataReferences('peuples');
+    $peuples = $dataReferences->parseXml('peuples');
+    reset($peuples->peuple);
+
+//    $message = '<b><u>Liste des peuples disponibles :</u></b><ul>';
+//    //$message .= "<li>" . $peuples->peuple[0]->nom . "</li>";
+//    foreach ($peuples->peuple as $peuple) {
+//        $message .= "<li>" . $peuple->nom . "</li>";
+//    }
+//    $message = $message . '</ul>';
+//
+//    echo $message;
+//    
     // NOTE: Smarty has a capital 'S'
     //require_once('../libs/Smarty.class.php');
 //    $smarty = new Smarty();
@@ -139,25 +153,22 @@ function lauOutilsGM_func($atts) {
     //** un-comment the following line to show the debug console
 //    $smarty->debugging = true;
 //    $smarty->display('index.tpl');
-    
-    require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/SmartyLauogmClass.php';
-    
+//    require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/SmartyLauogmClass.php';
+//    
     $smartyLauogm = new SmartyLauogm();
-    $smartyLauogm->debugging = true;
-
+//    $smartyLauogm->debugging = true;
+    $smartyLauogm->assign('listePeuples',$peuples->peuple);
     $smartyLauogm->assign('name', 'ThrodoTest');
-    $smartyLauogm->assign('sequential', 'second');
-    $smartyLauogm->assign('randomValue', '1');
+    $smartyLauogm->assign('sequential', 'first');
+//    $smartyLauogm->assign('randomValue', '1');
 //    $smartyLauogm->display('index.tpl');
-
 //    $message="";
 //    $message=$smartyLauogm->fetch('index.tpl');
 //    return $message;
-    return $smartyLauogm->fetch('index.tpl');
+    return $smartyLauogm->fetch('choixRace.tpl');
 }
 
 add_shortcode('lauoutilsgm', 'lauoutilsgm_func');
 
-new Lauogm_OptionPage();
-
+$pluginAdminPage = new LauogmPluginAdminPage();
 ?>

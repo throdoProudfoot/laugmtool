@@ -1,13 +1,13 @@
 {* Smarty *}
 
-<h2>Hello, welcome to the Lauogm plugin administration!<h2>
+<h2>Hello, welcome to the Lauogm plugin administration !<h2>
 
-        <p>Texte avant le formulaire</p>
+        <p>Vous pouvez réinitialiser les différentes tables utilisées par le plugin <b>L'Anneau Unique Outils pour GM</b></p>
 
         <form method="post" action="">
             <fieldset>
                 <legend>Cochez les tables que vous voulez réinitialiser :</legend> <!-- Titre du fieldset --> 
-                <input type="checkbox" name="races" id="races" /> <label for="races">Races</label><br />
+                <input type="checkbox" name="peuples" id="peuples" /> <label for="peuples">Peuples</label><br />
             </fieldset>
             <input type="submit" name="save" value="Valider" />
         </form>

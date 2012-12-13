@@ -15,10 +15,10 @@ $_smarty_tpl->decodeProperties(array (
 )); /*/%%SmartyHeaderCode%%*/?>
 <?php if (!$no_render) {?>
 
-<h2>Hello ThrodoTest, welcome to Smarty!<h2>
+<h2>Hello , welcome to Smarty!<h2>
 
-<em>This is my second template !</em>
+<em>This is my  template !</em>
 
 It is run on <b>localhost</b> server.
 
-New things in the template with new variable 1<?php } ?>
+New things in the template with new variable <?php } ?>
