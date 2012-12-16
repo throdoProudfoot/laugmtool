@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<root>
+    <tables>
+        <table>
+            <nom>lauPeuples</nom>
+            <libelle>Peuples</libelle>
+            <descriptifCourte>Description des peuples</descriptifCourte>
+            <descriptionLongue>Table contenant la description des différents peuples disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
+        </table>
+        <table>
+            <nom>lauVocations</nom>
+            <libelle>Vocations</libelle>
+            <descriptifCourte>Description des vocations</descriptifCourte>
+            <descriptionLongue>Table contenant la description des différentes vocations disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
+        </table>
+        <table>
+            <nom>lauAvantages</nom>
+            <libelle>Avantages</libelle>
+            <descriptifCourte>Description des avantages</descriptifCourte>
+            <descriptionLongue>Table contenant la description des différents avantages disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
+        </table>        
+    </tables>
+</root>

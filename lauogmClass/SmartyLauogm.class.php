@@ -16,7 +16,7 @@
  */
 class SmartyLauogm extends Smarty {
 
-    function __construct() {
+    function __construct($debug=false) {
 
         // Class Constructor.
         // These automatically get set with each new instance.
@@ -30,6 +30,8 @@ class SmartyLauogm extends Smarty {
 
         $this->caching = Smarty::CACHING_LIFETIME_CURRENT;
         $this->cache_lifetime = 0;
+        $this->debugging = $debug;
+
         $this->assign('app_name', 'The One Ring - GM Tool Set');
 
         //$this->testInstall();

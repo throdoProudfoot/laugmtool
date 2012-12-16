@@ -155,7 +155,7 @@ function lauOutilsGM_func($atts) {
 //    $smarty->display('index.tpl');
 //    require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/SmartyLauogmClass.php';
 //    
-    $smartyLauogm = new SmartyLauogm();
+    $smartyLauogm = new SmartyLauogm(false);
 //    $smartyLauogm->debugging = true;
     $smartyLauogm->assign('listePeuples',$peuples->peuple);
     $smartyLauogm->assign('name', 'ThrodoTest');

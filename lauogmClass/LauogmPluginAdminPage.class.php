@@ -22,19 +22,35 @@ class LauogmPluginAdminPage {
 
     function settings_page() {
 
-        require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/SmartyLauogmClass.php';
+        $smartyLauogmAdmin = new SmartyLauogm(false);
 
-        $smartyLauogmAdmin = new SmartyLauogm();
-        $smartyLauogmAdmin->debugging = false;
+        $tableReferences = new DataReferences('tables');
+        $tables = $tableReferences->parseXml('tables');
+        reset($tables->table);
+        $smartyLauogmAdmin->assign('listeTables', $tables->table);
 
         // Traitement à réaliser lorsque l'on est passé dans le formulaire et que l'on a validé
         if (isset($_POST['save'])) {
-            $smartyLauogmAdmin->assign('resultFile', WPLAUOGM_PLUGIN_DIR . '/result.php');            
-        } else {
-            $smartyLauogmAdmin->assign('resultFile', 'empty.php');            
+
+            $smartyLauogmAdmin->assign('formValidated', true);
+            $arrayTablesReinitialisees = array();
+
+            if (isset($_POST['Peuples'])) {
+                 array_push($arrayTablesReinitialisees, 'Peuples');
+            }
+            if (isset($_POST['Vocations'])) {
+                array_push($arrayTablesReinitialisees, 'Vocations');
+            }
+            if (isset($_POST['Avantages'])) {
+                array_push($arrayTablesReinitialisees, 'Avantages');
+            }
+            
+            $smartyLauogmAdmin->assign('listeTablesReinitialisees', $arrayTablesReinitialisees);
         }
+
         $smartyLauogmAdmin->display('pluginAdmin.tpl');
     }
 
 }
+
 ?>
