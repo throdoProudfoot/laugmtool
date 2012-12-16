@@ -12,6 +12,8 @@
  */
 class LauogmPluginAdminPage {
 
+    private $descTable = array();
+
     function __construct() {
         add_action('admin_menu', array(&$this, 'admin_menu'));
     }
@@ -31,20 +33,31 @@ class LauogmPluginAdminPage {
 
         // Traitement à réaliser lorsque l'on est passé dans le formulaire et que l'on a validé
         if (isset($_POST['save'])) {
+            foreach ($tables->table as $currentTable) {
+                //$this->descTable["$currentTable->libelle"]["nom"] = $currentTable->nom;
+                $this->descTable["$currentTable->libelle"] = $currentTable;
+            }
 
             $smartyLauogmAdmin->assign('formValidated', true);
             $arrayTablesReinitialisees = array();
 
             if (isset($_POST['Peuples'])) {
-                 array_push($arrayTablesReinitialisees, 'Peuples');
+                array_push($arrayTablesReinitialisees, 'Peuples');
+
+                $drHandle = new DataReferences('peuples');
+                $data = $drHandle->parseXml('peuples');
+                reset($data->peuple);
+                $drHandle->stockMySQL($data, $this->descTable['Peuples']);
             }
+
             if (isset($_POST['Vocations'])) {
                 array_push($arrayTablesReinitialisees, 'Vocations');
             }
+
             if (isset($_POST['Avantages'])) {
                 array_push($arrayTablesReinitialisees, 'Avantages');
             }
-            
+
             $smartyLauogmAdmin->assign('listeTablesReinitialisees', $arrayTablesReinitialisees);
         }
 

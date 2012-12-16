@@ -8,20 +8,28 @@ and open the template in the editor.
     <peuples>
         <peuple>
             <nom>Bardide</nom>
-            <descriptifCourte>Humain citadin de Dale</descriptifCourte>
+            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
             <descriptionLongue></descriptionLongue>
         </peuple>
         <peuple>
             <nom>Homme sauvage des bois</nom>
+            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+            <descriptionLongue></descriptionLongue>            
         </peuple>
         <peuple>
             <nom>Béornide</nom>
+            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+            <descriptionLongue></descriptionLongue>            
         </peuple>
         <peuple>
             <nom>Elfe sylvains de sombre-Bois</nom>
+            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+            <descriptionLongue></descriptionLongue>            
         </peuple>
         <peuple>
             <nom>Hobbit de la Comté</nom>
+            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+            <descriptionLongue></descriptionLongue>            
         </peuple>
         <peuple>
             <nom>Nain du Mont-Solitaire</nom>
