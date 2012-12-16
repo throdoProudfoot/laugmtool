@@ -27,16 +27,8 @@
  */
 
 require_once 'Lauogm_ConfigPage.php';
-//require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/LauogmPluginAdminPageClass.php';
-// function __autoload($class) {
-//     include 'classes/' . $class . '.class.php';
-// }
-//function my_autoloader($class) {
-//    include 'classes/' . $class . '.class.php';
-//}
-//
-//spl_autoload_register('my_autoloader');
-// Ou, en utilisant une fonction anonyme à partir de PHP 5.3.0
+
+// Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des Classes
 spl_autoload_register(function ($class) {
             include WPLAUOGM_PLUGIN_CLASS_DIR . '/' . $class . '.class.php';
         });
@@ -81,94 +73,24 @@ function jal_install_data() {
     $rows_affected = $wpdb->insert($table_name, array('name' => $race_name, 'shortdescription' => $race_shortdescription));
 }
 
-// Lecture d'information dans un fichier.
-function lireFichierMessage() {
-
-    $fichierMessage = WPLAUOGM_PLUGIN_DIR . 'message.txt';
-    $fileContentArray = file($fichierMessage);
-
-    if ($fileContentArray == false) {
-        $message = "Erreur de récupération du contenu du fichier " . $fichierMessage;
-    } else {
-
-        $message = $fileContentArray[0];
-    }
-    return $message;
-}
-
-// Parsing de fichier XML
-function parsingXML($dataFile, $dataRoot) {
-    $dataSource = file_get_contents(WPLAUOGM_PLUGIN_DATA_DIR . '/' . $dataFile);
-    $root = new SimpleXMLElement($dataSource);
-
-    $arrayResult = $root->$dataRoot;
-
-    return $arrayResult;
-}
-
 //[lauoutilsgm]
 function lauOutilsGM_func($atts) {
-
-    //require_once SMARTY_DIR . '/Smarty.class.php';
-    //$messageDefaut = "Outils de création de personnage pour 'L'Anneau Unique' - Livre de Base (issue d'une fonction)";
-    //$message = lireFichierMessage();
-    //require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/DataReferencesClass.php';
 
     $dataReferences = new DataReferences('peuples');
     $peuples = $dataReferences->parseXml('peuples');
     reset($peuples->peuple);
 
-//    $message = '<b><u>Liste des peuples disponibles :</u></b><ul>';
-//    //$message .= "<li>" . $peuples->peuple[0]->nom . "</li>";
-//    foreach ($peuples->peuple as $peuple) {
-//        $message .= "<li>" . $peuple->nom . "</li>";
-//    }
-//    $message = $message . '</ul>';
-//
-//    echo $message;
-//    
-    // NOTE: Smarty has a capital 'S'
-    //require_once('../libs/Smarty.class.php');
-//    $smarty = new Smarty();
-//
-//    $lauogmPluginDirectory = dirname(WPLAUOGM_PLUGIN_DIR) . "/" . dirname(WPLAUOGM_PLUGIN_BASENAME);
-//    $smarty->template_dir = $lauogmPluginDirectory . "/templates";
-//    $smarty->compile_dir = $lauogmPluginDirectory . "/templates_c";
-//    $smarty->config_dir = $lauogmPluginDirectory . "/config";
-//    $smarty->cache_dir = $lauogmPluginDirectory . "/cache";
-//    $smarty->plugins_dir  = $lauogmPluginDirectory."/plugins";
-//    $smarty->trusted_dir  = $lauogmPluginDirectory."/trusted";
-//    $message .= "<br/>WPLAUOGM_PLUGIN_BASENAME = " . dirname(WPLAUOGM_PLUGIN_BASENAME);
-//    $message .= "<br/>WPLAUOGM_PLUGIN_DIR = " . dirname(WPLAUOGM_PLUGIN_DIR);
-//    $message .= "<br/>plugin_dir_path() = " . plugin_dir_path();
-//    $message .= "<br/>SMARTY_DIR = " . SMARTY_DIR;
-//    $message .= "<br/>SMARTY_SYSPLUGINS_DIR = " . SMARTY_SYSPLUGINS_DIR;
-//    $includeReturned = set_include_path(get_include_path() . PATH_SEPARATOR . SMARTY_DIR);
-//    $message .= "<br/>Old get_include_path() = " . $includeReturned;
-//    $message .= "<br/>New get_include_path() = " . get_include_path();
-//    $template_dir = $smarty->getTemplateDir();
-//    print_r($template_dir);
-//    $smarty->testInstall();
-//    $smarty->assign('name', 'Throdo');
-    //** un-comment the following line to show the debug console
-//    $smarty->debugging = true;
-//    $smarty->display('index.tpl');
-//    require_once WPLAUOGM_PLUGIN_CLASS_DIR . '/SmartyLauogmClass.php';
-//    
     $smartyLauogm = new SmartyLauogm(false);
-//    $smartyLauogm->debugging = true;
+
     $smartyLauogm->assign('listePeuples',$peuples->peuple);
     $smartyLauogm->assign('name', 'ThrodoTest');
     $smartyLauogm->assign('sequential', 'first');
-//    $smartyLauogm->assign('randomValue', '1');
-//    $smartyLauogm->display('index.tpl');
-//    $message="";
-//    $message=$smartyLauogm->fetch('index.tpl');
-//    return $message;
+    
     return $smartyLauogm->fetch('choixRace.tpl');
 }
 
 add_shortcode('lauoutilsgm', 'lauoutilsgm_func');
 
 $pluginAdminPage = new LauogmPluginAdminPage();
+
 ?>
