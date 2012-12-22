@@ -12,6 +12,7 @@
  */
 class DataReferences {
 
+    //Fichier initial, contenant les données
     private $file;
 
     function __construct($dataGameType) {
@@ -41,19 +42,8 @@ class DataReferences {
         $table_name = $wpdb->prefix . $structure->nom;
         $dynInsert = "CREATE TABLE " . $table_name . "(";
 
-        echo ('<hr><pre>STRUCTURE');
-        var_dump($structure);
-        echo ('</pre>');
-//
-//        echo ('<hr><pre>DATA');
-//        var_dump($data);
-//        echo ('</pre>');
-//
-//        echo '<hr>Nom de la table = ' . $table_name . '<br/>';
-
         foreach ($structure as $key => $value) {
             $dynInsert .= $key . ' tinytext NOT NULL,';
-            echo '<hr>Key = ' . $key . ' - Value = ' . $value . '<br/>';
         }
 
         $dynInsert .= 'UNIQUE KEY id (id));';
