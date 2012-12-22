@@ -35,7 +35,9 @@ class LauogmPluginAdminPage {
         if (isset($_POST['save'])) {
             foreach ($tables->table as $currentTable) {
                 //$this->descTable["$currentTable->libelle"]["nom"] = $currentTable->nom;
-                $this->descTable["$currentTable->libelle"] = $currentTable;
+//                echo '<hr>Type de $currentTable->libelle = ' . gettype($currentTable->libelle) . "<br/>";
+//                echo 'Type de (string)$currentTable->libelle = ' . gettype((string)$currentTable->libelle) . "<br/>";
+                $this->descTable[(string)$currentTable->libelle] = $currentTable;
             }
 
             $smartyLauogmAdmin->assign('formValidated', true);

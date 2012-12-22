@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/avantagesReferences.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE root SYSTEM "avantagesReferences.dtd">
+
+    <root>
+    ...
+    </root>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT root (avantages)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT avantages (avantage)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT avantage (descriptif|titre)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT titre (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT descriptif (#PCDATA)>
