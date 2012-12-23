@@ -6,46 +6,44 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<root>
-    <peuples>
-        <peuple>
-            <nom>Bardide</nom>
-            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
-            <descriptionLongue></descriptionLongue>
-        </peuple>
-        <peuple>
-            <nom>Homme sauvage des bois</nom>
-            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
-            <descriptionLongue></descriptionLongue>            
-        </peuple>
-        <peuple>
-            <nom>Béornide</nom>
-            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
-            <descriptionLongue></descriptionLongue>            
-        </peuple>
-        <peuple>
-            <nom>Elfe sylvains de sombre-Bois</nom>
-            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
-            <descriptionLongue></descriptionLongue>            
-        </peuple>
-        <peuple>
-            <nom>Hobbit de la Comté</nom>
-            <descriptionCourte>Humain citadin de Dale</descriptionCourte>
-            <descriptionLongue></descriptionLongue>            
-        </peuple>
-        <peuple>
-            <nom>Nain du Mont-Solitaire</nom>
-            <descriptionCourte></descriptionCourte>
-            <introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et, avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son trône dans les anciennes salles.</introduction>
-            <descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses versants, au cours de longues et profondes excavations. Lampes et chandelles brûlèrent sans interruption pour éclairer leurs travaux, tandis que leur trésor gonflait au rythme de leur gloire en ces terres septentrionales.
-            </descriptionLongue>
-            <listeVocations>
-                <vocation categorie="Primaire">Chasseur de trésors</vocation>
-                <vocation categorie="Primaire">Tueur</vocation>
-                <vocation categorie="Secondaire">Protecteur</vocation>
-            </listeVocations>
-            <niveauDeVie>Riche</niveauDeVie>
-            <avantageCulturel>Infatigable</avantageCulturel>
-        </peuple>
-    </peuples>
-</root>
+<peuples>
+    <peuple>
+        <nom>Bardide</nom>
+        <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+        <descriptionLongue></descriptionLongue>
+    </peuple>
+    <peuple>
+        <nom>Homme sauvage des bois</nom>
+        <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+        <descriptionLongue></descriptionLongue>            
+    </peuple>
+    <peuple>
+        <nom>Béornide</nom>
+        <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+        <descriptionLongue></descriptionLongue>            
+    </peuple>
+    <peuple>
+        <nom>Elfe sylvains de sombre-Bois</nom>
+        <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+        <descriptionLongue></descriptionLongue>            
+    </peuple>
+    <peuple>
+        <nom>Hobbit de la Comté</nom>
+        <descriptionCourte>Humain citadin de Dale</descriptionCourte>
+        <descriptionLongue></descriptionLongue>            
+    </peuple>
+    <peuple>
+        <nom>Nain du Mont-Solitaire</nom>
+        <descriptionCourte></descriptionCourte>
+        <introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et, avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son trône dans les anciennes salles.</introduction>
+        <descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses versants, au cours de longues et profondes excavations. Lampes et chandelles brûlèrent sans interruption pour éclairer leurs travaux, tandis que leur trésor gonflait au rythme de leur gloire en ces terres septentrionales.
+        </descriptionLongue>
+        <listeVocations>
+            <vocation categorie="Primaire">Chasseur de trésors</vocation>
+            <vocation categorie="Primaire">Tueur</vocation>
+            <vocation categorie="Secondaire">Protecteur</vocation>
+        </listeVocations>
+        <niveauDeVie>Riche</niveauDeVie>
+        <avantageCulturel>Infatigable</avantageCulturel>
+    </peuple>
+</peuples>

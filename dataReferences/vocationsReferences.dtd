@@ -12,15 +12,12 @@
 
     <?xml version="1.0"?>
 
-    <!DOCTYPE root SYSTEM "vocationsReferences.dtd">
+    <!DOCTYPE vocations SYSTEM "vocationsReferences.dtd">
 
-    <root>
+    <vocations>
     ...
-    </root>
+    </vocations>
 -->
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT root (vocations)*>
 
 <!--- Put your DTDDoc comment here. -->
 <!ELEMENT vocations (vocation)*>

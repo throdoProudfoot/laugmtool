@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE root SYSTEM "tablesReferences.dtd"> 
+<!DOCTYPE root SYSTEM "tablesReferences.dtd">
 
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 
-<root>
-    <tables>
-        <table>
-            <nom>lauPeuples</nom>
-            <libelle>Peuples</libelle>
-            <descriptionCourte>Description des peuples</descriptionCourte>
-            <descriptionLongue>Table contenant la description des différents peuples disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
-            <structure>            
-                <nom type="tinytext" nullable= "No">nomPeuple</nom>
-                <descriptionCourte>descriptionCourtePeuple</descriptionCourte>
-                <introduction type="tinytext" nullable= "Yes">introductionPeuplePeuple</introduction>
-                <descriptionLongue type="tinytext" nullable= "No">descriptionLonguePeuple</descriptionLongue>
-                <listeVocations type="tinytext" nullable= "No">
-                    <vocation categorie="Primaire">vocationPrimairePeuple</vocation>
-                    <vocation categorie="Primaire">vocationPrimairePeuple</vocation>
-                    <vocation categorie="Secondaire">vocationSecondairePeuple</vocation>
-                </listeVocations>
-                <niveauDeVie type="tinytext" nullable= "No">niveauDeViePeuple</niveauDeVie>
-                <avantageCulturel type="tinytext" nullable= "No">Infatigable</avantageCulturel>
-            </structure>            
-        </table>
-        <table>
-            <nom>lauVocations</nom>
-            <libelle>Vocations</libelle>
-            <descriptionCourte>Description des vocations</descriptionCourte>
-            <descriptionLongue>Table contenant la description des différentes vocations disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
-        </table>
-        <table>
-            <nom>lauAvantages</nom>
-            <libelle>Avantages</libelle>
-            <descriptionCourte>Description des avantages</descriptionCourte>
-            <descriptionLongue>Table contenant la description des différents avantages disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
-        </table>        
-    </tables>
-</root>
+<tables childNode="table">
+    <table>
+        <nom>lauPeuples</nom>
+        <libelle>Peuples</libelle>
+        <descriptionCourte>Description des peuples</descriptionCourte>
+        <descriptionLongue>Table contenant la description des différents peuples disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
+        <structure>
+            <nom type="varchar(30)" nullable= "No">nomPeuple</nom>
+            <descriptionCourte type="tinytext" nullable= "No">descriptionCourtePeuple</descriptionCourte>
+            <introduction type="tinytext" nullable= "Yes">introductionPeuplePeuple</introduction>
+            <descriptionLongue type="tinytext" nullable= "No">descriptionLonguePeuple</descriptionLongue>
+            <vocationPrimaire1 type="tinytext" nullable= "No">vocationPrimaire1Peuple</vocationPrimaire1>
+            <vocationPrimaire2 type="tinytext" nullable= "No">vocationPrimaire2Peuple</vocationPrimaire2>
+            <vocationSecondaire type="tinytext" nullable= "No">vocationSecondairePeuple</vocationSecondaire>
+            <niveauDeVie type="tinytext" nullable= "No">niveauDeViePeuple</niveauDeVie>
+            <avantageCulturel type="tinytext" nullable= "No">avantageCulturelPeuple</avantageCulturel>
+        </structure>
+    </table>
+    <table>
+        <nom>lauVocations</nom>
+        <libelle>Vocations</libelle>
+        <descriptionCourte>Description des vocations</descriptionCourte>
+        <descriptionLongue>Table contenant la description des différentes vocations disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
+    </table>
+    <table>
+        <nom>lauAvantages</nom>
+        <libelle>Avantages</libelle>
+        <descriptionCourte>Description des avantages</descriptionCourte>
+        <descriptionLongue>Table contenant la description des différents avantages disponibles dans le jeu de rôle - L'Anneau Unique</descriptionLongue>
+    </table>
+</tables>

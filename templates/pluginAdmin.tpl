@@ -7,10 +7,10 @@
 <form method="post" action="">
     <fieldset>
         <legend>Cochez les tables que vous voulez réinitialiser :</legend>
-        {foreach from=$listeTables item=table}
-            <p>
-                <input type="checkbox" name="{$table->libelle}" id="{$table->libelle}" />
-                <label for="{$table->libelle}">{$table->libelle}</label>
+        {foreach from=$listeTables key=k item=table}
+            <p title="{$table["descriptionCourte"]} !">
+                <input type="checkbox" name="{$k}" id="{$k}" />
+                <label for="{$table["libelle"]}">{$table["libelle"]}</label>
             </p>
         {foreachelse}
             No items were found in the search        

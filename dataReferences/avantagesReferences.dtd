@@ -12,15 +12,12 @@
 
     <?xml version="1.0"?>
 
-    <!DOCTYPE root SYSTEM "avantagesReferences.dtd">
+    <!DOCTYPE avantages SYSTEM "avantagesReferences.dtd">
 
-    <root>
+    <avantages>
     ...
-    </root>
+    </avantages>
 -->
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT root (avantages)*>
 
 <!--- Put your DTDDoc comment here. -->
 <!ELEMENT avantages (avantage)*>

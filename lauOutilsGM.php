@@ -33,43 +33,13 @@ spl_autoload_register(function ($class) {
             include WPLAUOGM_PLUGIN_CLASS_DIR . '/' . $class . '.class.php';
         });
 
-// Hook
-register_activation_hook(__FILE__, 'jal_install');
-register_activation_hook(__FILE__, 'jal_install_data');
-
 // Variable Globale
-global $jal_db_version;
-$jal_db_version = "1.0";
+global $wpdb;
 
-// Initialisation du plugin
-function jal_install() {
-    global $wpdb;
-    global $jal_db_version;
-
-    $table_name = $wpdb->prefix . "racesdisponible";
-
-    $sql = "CREATE TABLE $table_name (
-      id mediumint(9) NOT NULL AUTO_INCREMENT,
-      name tinytext NOT NULL,
-      shortdescription tinytext NOT NULL,
-      UNIQUE KEY id (id)
-    );";
-
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
-
-    add_option("jal_db_version", $jal_db_version);
-}
-
-function jal_install_data() {
-    global $wpdb;
-
-    $race_name = "Elfes sylvains";
-    $race_shortdescription = "Habitants de la fôret de Vertbois depuis des millénaires !";
-
-    $table_name = $wpdb->prefix . "racesdisponible";
-
-    $rows_affected = $wpdb->insert($table_name, array('name' => $race_name, 'shortdescription' => $race_shortdescription));
+if (WPLAUOGM_DEBUG_MODE) {
+    $wpdb->show_errors();
+} else {
+    $wpdb->hide_errors();
 }
 
 //[lauoutilsgm]
@@ -81,15 +51,14 @@ function lauOutilsGM_func($atts) {
 
     $smartyLauogm = new SmartyLauogm(false);
 
-    $smartyLauogm->assign('listePeuples',$peuples->peuple);
+    $smartyLauogm->assign('listePeuples', $peuples->peuple);
     $smartyLauogm->assign('name', 'ThrodoTest');
     $smartyLauogm->assign('sequential', 'first');
-    
+
     return $smartyLauogm->fetch('choixRace.tpl');
 }
 
 add_shortcode('lauoutilsgm', 'lauoutilsgm_func');
 
 $pluginAdminPage = new LauogmPluginAdminPage();
-
 ?>

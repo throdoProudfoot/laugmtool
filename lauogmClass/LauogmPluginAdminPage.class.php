@@ -18,45 +18,47 @@ class LauogmPluginAdminPage {
         add_action('admin_menu', array(&$this, 'admin_menu'));
     }
 
+    public function getDescTable() {
+        return $this->descTable;
+    }
+
+    public function setDescTable($descTable) {
+        $this->descTable = $descTable;
+    }
+
+    private function ajouteEnregistrement($key, $value) {
+        $this->descTable[$key] = $value;
+    }
+
     function admin_menu() {
         add_options_page('L\'Anneau Unique Outils de GM - Plugin Options', 'Lauogm Plugin', 'manage_options', 'my-unique-identifier', array($this, 'settings_page'));
     }
 
     function settings_page() {
-
+        $arrayTablesReinitialisees = array();
         $smartyLauogmAdmin = new SmartyLauogm(false);
 
+        // Récupération de la description des Tables.
         $tableReferences = new DataReferences('tables');
-        $tables = $tableReferences->parseXml('tables');
-        reset($tables->table);
-        $smartyLauogmAdmin->assign('listeTables', $tables->table);
+        $tables = $tableReferences->getDataReferenceInformation();
+
+        $smartyLauogmAdmin->assign('listeTables', $tables);
 
         // Traitement à réaliser lorsque l'on est passé dans le formulaire et que l'on a validé
         if (isset($_POST['save'])) {
-            foreach ($tables->table as $currentTable) {
-                $this->descTable[(string)$currentTable->libelle] = $currentTable;
+            $tables = $tableReferences->getArrayValue();
+            foreach ($tables as $key => $value) {
+                if (isset($_POST[(string) $value["nom"]])) {
+                    echo "<br/> Données traitées : " . $value["libelle"] . "<br/>";
+                    array_push($arrayTablesReinitialisees, $value["libelle"]);
+
+                    $drHandle = new DataReferences(strtolower($value["libelle"]));
+                    $drHandle->storeData($value);
+                }
+                //$this->ajouteEnregistrement((string) $currentTable->libelle, $currentTable);
             }
 
             $smartyLauogmAdmin->assign('formValidated', true);
-            $arrayTablesReinitialisees = array();
-
-            if (isset($_POST['Peuples'])) {
-                array_push($arrayTablesReinitialisees, 'Peuples');
-
-                $drHandle = new DataReferences('peuples');
-                $data = $drHandle->parseXml('peuples');
-                reset($data->peuple);
-                $drHandle->stockMySQL($data, $this->descTable['Peuples']);
-            }
-
-            if (isset($_POST['Vocations'])) {
-                array_push($arrayTablesReinitialisees, 'Vocations');
-            }
-
-            if (isset($_POST['Avantages'])) {
-                array_push($arrayTablesReinitialisees, 'Avantages');
-            }
-
             $smartyLauogmAdmin->assign('listeTablesReinitialisees', $arrayTablesReinitialisees);
         }
 

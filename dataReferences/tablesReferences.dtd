@@ -12,15 +12,12 @@
 
     <?xml version="1.0"?>
 
-    <!DOCTYPE root SYSTEM "tablesReferences.dtd">
+    <!DOCTYPE tables SYSTEM "tablesReferences.dtd">
 
-    <root>
+    <tables>
     ...
-    </root>
+    </tables>
 -->
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT root (tables)*>
 
 <!--- Put your DTDDoc comment here. -->
 <!ELEMENT tables (table)*>

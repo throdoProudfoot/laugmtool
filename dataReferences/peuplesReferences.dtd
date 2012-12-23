@@ -12,15 +12,12 @@
 
     <?xml version="1.0"?>
 
-    <!DOCTYPE root SYSTEM "peuplesReferences.dtd">
+    <!DOCTYPE peuples SYSTEM "peuplesReferences.dtd">
 
-    <root>
+    <peuples>
     ...
-    </root>
+    </peuples>
 -->
-
-<!--- Put your DTDDoc comment here. -->
-<!ELEMENT root (peuples)*>
 
 <!--- Put your DTDDoc comment here. -->
 <!ELEMENT peuples (peuple)*>

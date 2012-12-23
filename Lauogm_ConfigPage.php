@@ -10,7 +10,6 @@
  *
  * @author throdo
  */
-
 define('WPLAUOGM_VERSION', '0.1');
 
 define('WPLAUOGM_REQUIRED_WP_VERSION', '3.3');
@@ -26,5 +25,8 @@ if (!defined('WPLAUOGM_PLUGIN_CLASS_DIR'))
 
 if (!defined('WPLAUOGM_PLUGIN_DATA_DIR'))
     define('WPLAUOGM_PLUGIN_DATA_DIR', WPLAUOGM_PLUGIN_DIR . '/dataReferences');
+
+if (!defined('WPLAUOGM_DEBUG_MODE'))
+    define('WPLAUOGM_DEBUG_MODE', true);
 
 ?>
