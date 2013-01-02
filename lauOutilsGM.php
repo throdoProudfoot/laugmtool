@@ -1,13 +1,12 @@
 <?php
 
 /*
-  Plugin Name: L'Anneau Unique - Outils du Maitre du Jeu
-  Plugin URI: http://lauOutils.throdo-fierpied.com/pluginWordpress/
-  Description: Un plugin WordPress qui fournit des outils le Maitre du Jeu de l'Anneau Unique. Une série d'outils est disponible comme la création de personnage par exemple.
-  Version: 0.1
-  Author: Throdo Proudfoot
-  Author URI: http://www.throdo-fierpied.com/
-  License: GPL2
+ * Plugin Name: L'Anneau Unique - Outils du Maitre du Jeu Plugin URI:
+ * http://lauOutils.throdo-fierpied.com/pluginWordpress/ Description: Un plugin
+ * WordPress qui fournit des outils le Maitre du Jeu de l'Anneau Unique. Une
+ * série d'outils est disponible comme la création de personnage par exemple.
+ * Version: 0.1 Author: Throdo Proudfoot Author URI:
+ * http://www.throdo-fierpied.com/ License: GPL2
  */
 
 /*  Copyright 2012  Throdo_Prodoufoot  (email : throdo.proudfoot@gmail.com)
@@ -28,37 +27,49 @@
 
 require_once 'Lauogm_ConfigPage.php';
 
-// Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des Classes
-spl_autoload_register(function ($class) {
-            include WPLAUOGM_PLUGIN_CLASS_DIR . '/' . $class . '.class.php';
-        });
+// Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des
+// Classes
+spl_autoload_register ( function ($class) {
+	$include=array (WPLAUOGM_PLUGIN_CLASS_DIR,WPLAUOGM_PLUGIN_DAO_CLASS_DIR,WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR);	
+	$find = false;
+	foreach ($include as $key => $value) {
+		$file = $value . '/' . $class . '.class.php';
+		if (file_exists($file)) {
+			include $file;
+			$find = true;
+		}
+	}
+	if (! $find) {
+		throw new Exception("Error include de la classe " . $class,2000);
+	}
+} );
+
 
 // Variable Globale
 global $wpdb;
 
 if (WPLAUOGM_DEBUG_MODE) {
-    $wpdb->show_errors();
+	$wpdb->show_errors ();
 } else {
-    $wpdb->hide_errors();
+	$wpdb->hide_errors ();
 }
 
-//[lauoutilsgm]
+// [lauoutilsgm]
 function lauOutilsGM_func($atts) {
-
-    $dataReferences = new DataReferences('peuples');
-    $peuples = $dataReferences->parseXml('peuples');
-    reset($peuples->peuple);
-
-    $smartyLauogm = new SmartyLauogm(false);
-
-    $smartyLauogm->assign('listePeuples', $peuples->peuple);
-    $smartyLauogm->assign('name', 'ThrodoTest');
-    $smartyLauogm->assign('sequential', 'first');
-
-    return $smartyLauogm->fetch('choixRace.tpl');
+	$dataReferences = new DataReferencesDAO ( 'peuples' );
+	$peuples = $dataReferences->parseXml ( 'peuples' );
+	reset ( $peuples->peuple );
+	
+	$smartyLauogm = new SmartyLauogm ( false );
+	
+	$smartyLauogm->assign ( 'listePeuples', $peuples->peuple );
+	$smartyLauogm->assign ( 'name', 'ThrodoTest' );
+	$smartyLauogm->assign ( 'sequential', 'first' );
+	
+	return $smartyLauogm->fetch ( 'choixRace.tpl' );
 }
 
-add_shortcode('lauoutilsgm', 'lauoutilsgm_func');
+add_shortcode ( 'lauoutilsgm', 'lauoutilsgm_func' );
 
-$pluginAdminPage = new LauogmPluginAdminPage();
+$pluginAdminPage = new LauogmPluginAdminPage ();
 ?>

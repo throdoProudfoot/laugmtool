@@ -1,0 +1,31 @@
+!SESSION 2012-12-26 21:08:04.176 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.6.0_24
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=fr_FR
+Framework arguments:  -showlocation -showlocation -showlocation
+Command-line arguments:  -os linux -ws gtk -arch x86 -showlocation -showlocation -data /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM -showlocation
+
+!ENTRY org.eclipse.ui.workbench 2 0 2012-12-26 21:08:09.069
+!MESSAGE A handler conflict occurred.  This may disable some commands.
+!SUBENTRY 1 org.eclipse.ui.workbench 2 0 2012-12-26 21:08:09.070
+!MESSAGE Conflict for 'org.eclipse.dltk.ui.edit.text.script.refactor.quickMenu':
+HandlerActivation(commandId=org.eclipse.dltk.ui.edit.text.script.refactor.quickMenu,
+	handler=org.eclipse.dltk.internal.ui.actions.refactoring.RefactorActionGroup$3@16b7f83,
+	expression=AndExpression(ActivePartExpression(org.eclipse.php.internal.ui.explorer.PHPExplorerPart@17490ad),WorkbenchWindowExpression(org.eclipse.ui.internal.WorkbenchWindow@10e1513)),sourcePriority=1064960)
+HandlerActivation(commandId=org.eclipse.dltk.ui.edit.text.script.refactor.quickMenu,
+	handler=org.eclipse.dltk.internal.ui.actions.refactoring.RefactorActionGroup$3@807f85,
+	expression=AndExpression(ActivePartExpression(org.eclipse.php.internal.ui.explorer.PHPExplorerPart@17490ad),WorkbenchWindowExpression(org.eclipse.ui.internal.WorkbenchWindow@10e1513)),sourcePriority=1064960)
+
+!ENTRY org.zend.php.zendserver.deployment.ui 4 0 2012-12-26 21:08:20.097
+!MESSAGE Adresse déjà utilisée
+!STACK 0
+java.net.BindException: Adresse déjà utilisée
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:353)
+	at java.net.ServerSocket.bind(ServerSocket.java:336)
+	at java.net.ServerSocket.<init>(ServerSocket.java:202)
+	at java.net.ServerSocket.<init>(ServerSocket.java:114)
+	at org.zend.php.zendserver.deployment.ui.chrome.SocketCommandListener.openServerSocket(SocketCommandListener.java:69)
+	at org.zend.php.zendserver.deployment.ui.chrome.SocketCommandListener$1.run(SocketCommandListener.java:39)
+	at java.lang.Thread.run(Thread.java:679)

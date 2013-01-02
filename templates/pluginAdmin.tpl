@@ -8,7 +8,7 @@
     <fieldset>
         <legend>Cochez les tables que vous voulez réinitialiser :</legend>
         {foreach from=$listeTables key=k item=table}
-            <p title="{$table["descriptionCourte"]} !">
+            <p title="{$table["toolTip"]} !">
                 <input type="checkbox" name="{$k}" id="{$k}" />
                 <label for="{$table["libelle"]}">{$table["libelle"]}</label>
             </p>
@@ -18,6 +18,10 @@
     </fieldset>
     <input type="submit" name="save" value="Valider" />
 </form>
+
+{if isset($erreurDetected)}
+	{include file='erreurInclude.tpl'}
+{/if}
 
 {* Le bloc suivant n'apparait que lorsque l'on a déja validé le formulaire *}
 {if isset($formValidated)}<p>Les tables suivantes ont été réinitialisées : </p>
