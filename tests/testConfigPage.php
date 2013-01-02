@@ -39,24 +39,6 @@ if (! defined ( 'WPLAUOGM_PLUGIN_TESTDATA_DIR' ))
 if (! defined ( 'WPLAUOGM_DEBUG_MODE' ))
 	define ( 'WPLAUOGM_DEBUG_MODE', true );
 	
-	// spl_autoload_register ( function ($class) {
-	// try {
-	// include WPLAUOGM_PLUGIN_CLASS_DIR . '/' . $class . '.class.php';
-	// } catch ( Exception $e ) {
-	// try {
-	// include WPLAUOGM_PLUGIN_DAO_CLASS_DIR . '/' . $class . '.class.php';
-	// } catch ( Exception $e ) {
-	// try {
-	// include WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR . '/' . $class .
-// '.class.php';
-	// } catch (Exception $e) {
-	// echo '<hr>' . $class . ' not found';
-	// }
-	
-// }
-	// }
-	// } );
-	
 // Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des
 	// Classes
 spl_autoload_register ( function ($class) {

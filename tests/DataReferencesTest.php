@@ -1,18 +1,7 @@
 <?php
 
-// use lauogmClass\LauDataFileParsingException;
-// use lauogmClass\LauDataFileNotFoundException;
-
-require_once '../lauogmClass/dao/DataReferencesDAO.class.php';
-// require_once 'lauogmClass/LauDataFileNotFoundException.php';
-// require_once 'lauogmClass/LauDataFileParsingException.php';
-
-require_once 'lauogmClass/DataReferences.class.php';
+require_once 'tests/testConfigPage.php';
 require_once 'PHPUnit/Framework/TestCase.php';
-
-define ( 'WPLAUOGM_PLUGIN_DIR', '/media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM' );
-define ( 'WPLAUOGM_PLUGIN_CLASS_DIR', constant ( 'WPLAUOGM_PLUGIN_DIR' ) . '/lauogmClass' );
-define ( 'WPLAUOGM_PLUGIN_DATA_DIR', constant ( 'WPLAUOGM_PLUGIN_DIR' ) . '/tests/testDataReferences' );
 
 /**
  * DataReferences test case.
