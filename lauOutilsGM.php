@@ -30,20 +30,20 @@ require_once 'Lauogm_ConfigPage.php';
 // Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des
 // Classes
 spl_autoload_register ( function ($class) {
-	$include=array (WPLAUOGM_PLUGIN_CLASS_DIR,WPLAUOGM_PLUGIN_DAO_CLASS_DIR,WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR);	
+	$include = array (
+			WPLAUOGM_PLUGIN_CLASS_DIR,
+			WPLAUOGM_PLUGIN_DAO_CLASS_DIR,
+			WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR 
+	);
 	$find = false;
-	foreach ($include as $key => $value) {
+	foreach ( $include as $key => $value ) {
 		$file = $value . '/' . $class . '.class.php';
-		if (file_exists($file)) {
+		if (file_exists ( $file )) {
 			include $file;
 			$find = true;
 		}
 	}
-	if (! $find) {
-		throw new Exception("Error include de la classe " . $class,2000);
-	}
 } );
-
 
 // Variable Globale
 global $wpdb;

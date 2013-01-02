@@ -1,7 +1,7 @@
 <?php
 
-use lauogmClass\LauDataFileNotFoundException;
-use lauogmClass\LauDataFileParsingException;
+use LauDataFileNotFoundException;
+use LauDataFileParsingException;
 
 /*
  * To change this template, choose Tools | Templates
@@ -47,7 +47,7 @@ class DataReferences {
     }
 
     public function getTableList () {
-
+echo '1';
     	foreach ($this->tableReferences as $key => $value) {
     		$infoTables[$key]=array(
     				'libelle' => $value['libelle'],
