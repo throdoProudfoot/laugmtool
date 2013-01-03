@@ -29,7 +29,7 @@
 				<null>not null</null>
 			</colonne>
 			<colonne>
-				<nom>introductionPeuplePeuple</nom>
+				<nom>introductionPeuple</nom>
 				<type>tinytext</type>
 				<null>null</null>
 			</colonne>

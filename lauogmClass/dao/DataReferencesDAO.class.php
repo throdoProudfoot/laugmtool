@@ -68,57 +68,107 @@ class DataReferencesDAO {
 			$returnValue = $dom->load ( $this->getFile () );
 		} catch ( Exception $e ) {
 			throw new LauDataFileParsingException ( $this->getFile () );
-		}	
+		}
 		$retArray = XML2Array::createArray ( $dom );
 		$childNode = $retArray [$this->root] ['@attributes'] ['childNode'];
 		foreach ( $retArray [$this->root] [$childNode] as $key => $value ) {
-			$returnArray[$value['nom']]=$value;
+			$returnArray [$value ['nom']] = $value;
 		}
 		return ($returnArray);
 	}
 	
 	/**
 	 */
-	public function setDataReferenceContents($structure) {
-		//$this->storeData ($structure);
-		return 0; 
+	public function setDataReferenceContents($nomTable, $structure) {
+		$this->createTable ( $nomTable, $structure );
+		$this->storeData ( $nomTable, $structure, $this->getDataReferenceContents () );
+		return 0;
 	}
 	
 	/**
-	 * 
+	 *
+	 * @param unknown_type $nomTable        	
+	 * @param unknown_type $structure        	
+	 * @param unknown_type $data        	
 	 */
-	private function storeData($structure) {
+	private function createTable($nomTable, $structure) {
 		global $wpdb;
 		
-		// require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-		
-		$table_name = $wpdb->prefix . $this->arrayValue ["nom"];
+		$table_name = $wpdb->prefix . $nomTable;
 		
 		$dynDropTable = "DROP TABLE IF EXISTS `" . $table_name . "`;";
 		
 		$e = $wpdb->query ( $dynDropTable );
+		// echo '$dynDropTable = ' . $dynDropTable . '<hr>';
 		
 		$dynCreateTable = "CREATE TABLE " . $table_name . " (";
-		$dynCreateTable .= 'id MEDIUMINT NOT NULL AUTO_INCREMENT,';
 		
-		foreach ( $name ["structure"] as $key => $value ) {
-			$dynCreateTable .= ' ' . $key;
-			foreach ( $value->attributes () as $k => $v ) {
-				if ($k == 'type') {
-					$dynCreateTable .= ' ' . strtoupper ( $v );
-				}
-				if ($k == 'nullable') {
-					if ($v == 'Yes') {
-						$dynCreateTable .= ' NULL,';
-					} else {
-						$dynCreateTable .= ' NOT NULL,';
-					}
-				}
+		foreach ( $structure [colonne] as $key => $value ) {
+			$dynCreateTable .= ' ' . $value ['nom'];
+			switch ($value ['type']) {
+				case 'indexAuto' :
+					$tableIndex = $value ['nom'];
+					$dynCreateTable .= " MEDIUMINT NOT NULL AUTO_INCREMENT,";
+					break;
+				default :
+					$dynCreateTable .= " " . $value ['type'] . " " . strtoupper ( $value ['null'] ) . ",";
+					break;
+			}
+			// foreach ( $value->attributes () as $k => $v ) {
+			// if ($k == 'type') {
+			// $dynCreateTable .= ' ' . strtoupper ( $v );
+			// }
+			// if ($k == 'nullable') {
+			// if ($v == 'Yes') {
+			// $dynCreateTable .= ' NULL,';
+			// } else {
+			// $dynCreateTable .= ' NOT NULL,';
+			// }
+			// }
+			// }
+		}
+		
+		$dynCreateTable .= ' PRIMARY KEY  (' . $tableIndex . '));';
+		$e = $wpdb->query ( $dynCreateTable );
+	}
+	
+	/**
+	 *
+	 * @param unknown_type $nomTable        	
+	 * @param unknown_type $structure        	
+	 * @param unknown_type $data        	
+	 * @return number
+	 */
+	private function storeData($nomTable, $structure, $data) {
+		global $wpdb;
+		
+		$table_name = $wpdb->prefix . $nomTable;
+		
+		$ajouteVirgule = false;
+		foreach ( $structure [colonne] as $key => $value ) {
+			if ($ajouteVirgule) {
+				$dynListColonne .= ',';
+			}
+			if ($value ['type'] != "indexAuto") {
+				$dynListColonne .= '`' . $value ['nom'] . '`';
+				$ajouteVirgule = true;
 			}
 		}
 		
-		$dynCreateTable .= ' PRIMARY KEY  (id));';
-		$e = $wpdb->query ( $dynCreateTable );
+		foreach ( $data as $key => $value ) {
+			$dynInsertTable = "INSERT INTO " . $table_name . " (" . $dynListColonne . ") VALUES(";
+			$ajouteVirgule = false;
+			
+			foreach ( $value as $k => $v ) {
+				if ($ajouteVirgule) {
+					$dynInsertTable .= ',';
+				}
+				$dynInsertTable .= '"' . $v . '"';
+				$ajouteVirgule = true;
+			}
+			$dynInsertTable .= ');';
+			$e = $wpdb->query ( $dynInsertTable );
+		}
 	}
 }
 

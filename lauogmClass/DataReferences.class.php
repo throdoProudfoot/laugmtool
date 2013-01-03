@@ -76,9 +76,9 @@ class DataReferences {
 	
 	/**
 	 *
-	 * @param unknown_type $post        	
+	 * @param array $post        	
 	 * @throws Exception
-	 * @return Ambigous <the, DataReferencesDAO, multitype:>
+	 * @return array $retArray
 	 */
 	public function processFormResult($post) {
 		$retArray = array ();
@@ -92,13 +92,11 @@ class DataReferences {
 				}
 				
 				try {
-					$drd->setDataReferenceContents ( $this->getStructure ( $key ) );
+					$drd->setDataReferenceContents ( $value ['nom'], $this->getStructure ( $key ) );
 					array_push ( $retArray, $dataRef );
 				} catch ( Exception $e ) {
 					throw $e;
 				}
-				
-				
 			}
 		}
 		return $retArray;

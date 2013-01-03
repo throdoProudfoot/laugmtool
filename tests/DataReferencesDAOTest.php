@@ -107,11 +107,8 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	 * Tests DataReferencesDAO->setDataReferenceContents()
 	 */
 	public function testSetDataReferenceContents() {
-		// TODO Auto-generated
-		// DataReferencesDAOTest->testSetDataReferenceContents()
-		$this->markTestIncomplete ( "setDataReferenceContents test not implemented" );
 		
-		$this->DataReferencesDAO->setDataReferenceContents(/* parameters */);
+		$this->DataReferencesDAO->setDataReferenceContents(null);
 	}
 }
 
