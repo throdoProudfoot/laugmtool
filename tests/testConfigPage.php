@@ -55,9 +55,6 @@ spl_autoload_register ( function ($class) {
 			$find = true;
 		}
 	}
-	if (! $find) {
-		throw new Exception ( "Error include de la classe " . $class, 2000 );
-	}
 } );
 
 ?>

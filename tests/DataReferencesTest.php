@@ -62,18 +62,34 @@ class DataReferencesTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function test__construct() {
 		$df = new DataReferences ();
-		$this->assertNotNull ( $df );		
-		$this->assertNotNull ($df->getTableReferences());
-		$this->assertArrayHasKey('lauPeuples', $df->getTableReferences());
+		$this->assertNotNull ( $df );
+		$this->assertNotNull ( $df->getTableReferences () );
+		$this->assertArrayHasKey ( 'lauPeuples', $df->getTableReferences () );
 	}
 	
 	/**
 	 * Tests DataReferences->getTableList()
 	 */
 	public function testGetTableList() {
-		$gtl = $this->DataReferences->getTableList();
-		$this->assertNotNull ($gtl);
-		$this->assertArrayHasKey('lauPeuples', $gtl);
+		$gtl = $this->DataReferences->getTableList ();
+		$this->assertNotNull ( $gtl );
+		$this->assertArrayHasKey ( 'lauPeuples', $gtl );
+	}
+
+
+	/**
+	 * Tests DataReferences->processFormResult()
+	 */
+	public function testProcessFormResult() {
+		$post = array (
+				'lauPeuples' => 'on',
+				'lauVocations' => 'on',
+				'save' => 'Valider' 
+		);
+		$gtl = $this->DataReferences->processFormResult($post);
+		$this->assertNotNull ( $gtl );
+		$this->assertContains ( 'peuples', $gtl );
+		$this->assertContains ( 'vocations', $gtl );		
 	}
 }
 
