@@ -79,10 +79,15 @@ class DataReferencesDAO {
 	
 	/**
 	 */
-	public function setDataReferenceContents() {
-		return $this->storeData ();
+	public function setDataReferenceContents($structure) {
+		//$this->storeData ($structure);
+		return 0; 
 	}
-	private function storeData() {
+	
+	/**
+	 * 
+	 */
+	private function storeData($structure) {
 		global $wpdb;
 		
 		// require_once(ABSPATH . 'wp-admin/includes/upgrade.php');

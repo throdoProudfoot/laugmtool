@@ -21,7 +21,7 @@ class LauogmPluginAdminPage {
 				'admin_menu' 
 		) );
 	}
-
+	
 	/**
 	 *
 	 * @return multitype:
@@ -29,24 +29,25 @@ class LauogmPluginAdminPage {
 	public function getDescTable() {
 		return $this->descTable;
 	}
-
+	
 	/**
-	 * @param unknown_type $descTable
+	 *
+	 * @param unknown_type $descTable        	
 	 */
 	public function setDescTable($descTable) {
 		$this->descTable = $descTable;
 	}
 	
 	/**
-	 * @param unknown_type $key
-	 * @param unknown_type $value
+	 *
+	 * @param unknown_type $key        	
+	 * @param unknown_type $value        	
 	 */
 	private function ajouteEnregistrement($key, $value) {
 		$this->descTable [$key] = $value;
 	}
-
+	
 	/**
-	 * 
 	 */
 	function admin_menu() {
 		add_options_page ( 'L\'Anneau Unique Outils de GM - Plugin Options', 'Lauogm Plugin', 'manage_options', 'my-unique-identifier', array (
@@ -69,7 +70,8 @@ class LauogmPluginAdminPage {
 		}
 		
 		try {
-			$smartyLauogmAdmin->assign ( 'listeTables', $df->getTableList () );
+			$tables = $df->getTableList ();
+			$smartyLauogmAdmin->assign ( 'listeTables', $tables );
 		} catch ( Exception $e ) {
 			$smartyLauogmAdmin->assign ( 'erreurDetected', true );
 			$smartyLauogmAdmin->assign ( 'erreur', $e );
@@ -79,21 +81,14 @@ class LauogmPluginAdminPage {
 		// que l'on a validé
 		if (isset ( $_POST ['save'] )) {
 			
-			foreach ( $tables as $key => $value ) {
-				if (isset ( $_POST [( string ) $value ['nom']] )) {
-					array_push ( $arrayTablesReinitialisees, $value ['libelle'] );
-					
-					// Récupération de la description des Tables.
-					try {
-						$drHandle = new DataReferencesDAO ( strtolower ( $value ['libelle'] ) );
-					} catch ( LauDataFileNotFoundException $e ) {
-						$smartyLauogmAdmin->assign ( 'erreurDetected', true );
-						$smartyLauogmAdmin->assign ( 'erreur', $e );
-					}
-					
-					// $drHandle->storeData ( $value );
-				}
+			// Récupération de la description des Tables.
+			try {
+				$arrayTablesReinitialisees = $df->processFormResult ( $_POST );
+			} catch ( LauDataFileNotFoundException $e ) {
+				$smartyLauogmAdmin->assign ( 'erreurDetected', true );
+				$smartyLauogmAdmin->assign ( 'erreur', $e );
 			}
+			
 			$smartyLauogmAdmin->assign ( 'formValidated', true );
 			$smartyLauogmAdmin->assign ( 'listeTablesReinitialisees', $arrayTablesReinitialisees );
 		}
