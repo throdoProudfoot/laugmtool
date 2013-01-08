@@ -20,7 +20,7 @@ class DataReferencesTest extends PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		parent::setUp ();
 		
-		$this->DataReferences = new DataReferences ();
+		$this->DataReferences = new DataReferences ( 'peuples' );
 	}
 	
 	/**
@@ -41,55 +41,15 @@ class DataReferencesTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	/**
-	 * Tests DataReferences->getTableReferences()
-	 */
-	public function testGetTableReferences() {
-		$this->assertNotNull ( $this->DataReferences->getTableReferences () );
-	}
-	
-	/**
-	 * Tests DataReferences->setTableReferences()
-	 */
-	public function testSetTableReferences() {
-		// TODO Auto-generated DataReferencesTest->testSetTableReferences()
-		$this->markTestIncomplete ( "setTableReferences test not implemented" );
-		
-		$this->DataReferences->setTableReferences(/* parameters */);
-	}
-	
-	/**
 	 * Tests DataReferences->__construct()
 	 */
 	public function test__construct() {
-		$df = new DataReferences ();
+		$df = new DataReferences ( 'peuples' );
 		$this->assertNotNull ( $df );
-		$this->assertNotNull ( $df->getTableReferences () );
-		$this->assertArrayHasKey ( 'lauPeuples', $df->getTableReferences () );
-	}
-	
-	/**
-	 * Tests DataReferences->getTableList()
-	 */
-	public function testGetTableList() {
-		$gtl = $this->DataReferences->getTableList ();
-		$this->assertNotNull ( $gtl );
-		$this->assertArrayHasKey ( 'lauPeuples', $gtl );
-	}
-
-
-	/**
-	 * Tests DataReferences->processFormResult()
-	 */
-	public function testProcessFormResult() {
-		$post = array (
-				'lauPeuples' => 'on',
-				'lauVocations' => 'on',
-				'save' => 'Valider' 
-		);
-		$gtl = $this->DataReferences->processFormResult($post);
-		$this->assertNotNull ( $gtl );
-		$this->assertContains ( 'peuples', $gtl );
-		$this->assertContains ( 'vocations', $gtl );		
+		$retArray = $df->getContent ();
+		$this->assertNotNull ( $retArray );
+		$this->assertArrayHasKey ( 'Bardide', $retArray );
+		$this->assertEquals ( 6, count ( $retArray ) );
 	}
 }
 

@@ -11,40 +11,46 @@
  * @author throdo
  */
 class DataReferences {
-	private $tableReferences;
-	
+	private $content;
+
 	/**
-	 *
-	 * @return the $tableReferences
+	 * @return the $content
 	 */
-	public function getTableReferences() {
-		return $this->tableReferences;
+	public function getContent() {
+		return $this->content;
 	}
-	
+
 	/**
-	 *
-	 * @param DataReferencesDAO $tableReferences        	
+	 * @param field_type $content
 	 */
-	public function setTableReferences($tableReferences) {
-		$this->tableReferences = $tableReferences;
+	public function setContent($content) {
+		$this->content = $content;
 	}
-	function __construct() {
+
+	/**
+	 * @param string $type
+	 * @throws LauDataFileNotFoundException
+	 * @throws LauDataFileParsingException
+	 */
+	function __construct($type) {
 		try {
-			$drd = new DataReferencesDAO ( 'tables' );
+			$drd = new DataReferencesDAO ( $type );
 		} catch ( LauDataFileNotFoundException $e ) {
 			throw $e;
 		}
 		
 		try {
-			$this->tableReferences = $drd->getDataReferenceContents ();
+			$this->content = $drd->getDataReferenceContent();
 		} catch ( LauDataFileParsingException $e ) {
 			throw $e;
+		} catch (LauDataFileStructureException $e) {
+			throw $e;
 		}
+		
 	}
 	
 	/**
-	 *
-	 * @return multitype:NULL unknown
+	 * @return multitype:NULL unknown 
 	 */
 	public function getTableList() {
 		foreach ( $this->tableReferences as $key => $value ) {
