@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root SYSTEM "peuplesReferences.dtd">
+
+<!-- To change this template, choose Tools | Templates and open the template 
+	in the editor. -->
+
+<peuples childNode="badChildNode">
+	<peuple>
+		<nom>Bardide</nom>
+		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
+			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
+			trône dans les anciennes salles.</introduction>
+		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
+			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
+			versants, au cours de longues et profondes excavations. Lampes et
+			chandelles brûlèrent sans interruption pour éclairer leurs travaux,
+			tandis que leur trésor gonflait au rythme de leur gloire en ces
+			terres septentrionales.
+		</descriptionLongue>
+		<vocationPrimaire1>Chasseur de trésors</vocationPrimaire1>
+		<vocationPrimaire2>Tueur</vocationPrimaire2>
+		<vocationSecondaire>Protecteur</vocationSecondaire>
+		<niveauDeVie>Riche</niveauDeVie>
+		<avantageCulturel>Infatigable</avantageCulturel>
+	</peuple>
+	<peuple>
+		<nom>Homme sauvage des bois</nom>
+		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
+			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
+			trône dans les anciennes salles.</introduction>
+		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
+			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
+			versants, au cours de longues et profondes excavations. Lampes et
+			chandelles brûlèrent sans interruption pour éclairer leurs travaux,
+			tandis que leur trésor gonflait au rythme de leur gloire en ces
+			terres septentrionales.
+		</descriptionLongue>
+		<vocationPrimaire1>Chasseur de trésors</vocationPrimaire1>
+		<vocationPrimaire2>Tueur</vocationPrimaire2>
+		<vocationSecondaire>Protecteur</vocationSecondaire>
+		<niveauDeVie>Riche</niveauDeVie>
+		<avantageCulturel>Infatigable</avantageCulturel>
+	</peuple>
+	<peuple>
+		<nom>Béornide</nom>
+		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
+			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
+			trône dans les anciennes salles.</introduction>
+		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
+			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
+			versants, au cours de longues et profondes excavations. Lampes et
+			chandelles brûlèrent sans interruption pour éclairer leurs travaux,
+			tandis que leur trésor gonflait au rythme de leur gloire en ces
+			terres septentrionales.
+		</descriptionLongue>
+		<vocationPrimaire1>Chasseur de trésors</vocationPrimaire1>
+		<vocationPrimaire2>Tueur</vocationPrimaire2>
+		<vocationSecondaire>Protecteur</vocationSecondaire>
+		<niveauDeVie>Riche</niveauDeVie>
+		<avantageCulturel>Infatigable</avantageCulturel>
+	</peuple>
+	<peuple>
+		<nom>Elfe sylvains de sombre-Bois</nom>
+		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
+			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
+			trône dans les anciennes salles.</introduction>
+		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
+			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
+			versants, au cours de longues et profondes excavations. Lampes et
+			chandelles brûlèrent sans interruption pour éclairer leurs travaux,
+			tandis que leur trésor gonflait au rythme de leur gloire en ces
+			terres septentrionales.
+		</descriptionLongue>
+		<vocationPrimaire1>Chasseur de trésors</vocationPrimaire1>
+		<vocationPrimaire2>Tueur</vocationPrimaire2>
+		<vocationSecondaire>Protecteur</vocationSecondaire>
+		<niveauDeVie>Riche</niveauDeVie>
+		<avantageCulturel>Infatigable</avantageCulturel>
+	</peuple>
+	<peuple>
+		<nom>Hobbit de la Comté</nom>
+		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
+			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
+			trône dans les anciennes salles.</introduction>
+		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
+			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
+			versants, au cours de longues et profondes excavations. Lampes et
+			chandelles brûlèrent sans interruption pour éclairer leurs travaux,
+			tandis que leur trésor gonflait au rythme de leur gloire en ces
+			terres septentrionales.
+		</descriptionLongue>
+		<vocationPrimaire1>Chasseur de trésors</vocationPrimaire1>
+		<vocationPrimaire2>Tueur</vocationPrimaire2>
+		<vocationSecondaire>Protecteur</vocationSecondaire>
+		<niveauDeVie>Riche</niveauDeVie>
+		<avantageCulturel>Infatigable</avantageCulturel>
+	</peuple>
+	<peuple>
+		<nom>Nain du Mont-Solitaire</nom>
+		<descriptionCourte>Nain d'Erebor, peuple de Thorin Ecudechêne</descriptionCourte>
+		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
+			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
+			trône dans les anciennes salles.</introduction>
+		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
+			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
+			versants, au cours de longues et profondes excavations. Lampes et
+			chandelles brûlèrent sans interruption pour éclairer leurs travaux,
+			tandis que leur trésor gonflait au rythme de leur gloire en ces
+			terres septentrionales.
+		</descriptionLongue>
+		<vocationPrimaire1>Chasseur de trésors</vocationPrimaire1>
+		<vocationPrimaire2>Tueur</vocationPrimaire2>
+		<vocationSecondaire>Protecteur</vocationSecondaire>
+		<niveauDeVie>Riche</niveauDeVie>
+		<avantageCulturel>Infatigable</avantageCulturel>
+	</peuple>
+</peuples>
