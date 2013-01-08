@@ -1,8 +1,5 @@
 <?php
 
-use lauogmClass\LauDataFileParsingException;
-use lauogmClass\LauDataFileNotFoundException;
-
 require_once 'tests/testConfigPage.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 
@@ -48,6 +45,8 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	public function test__constructWithFileExist() {
 		$df = new DataReferencesDAO ( 'peuples' );
 		$this->assertNotNull ( $df );
+		$resultArray = $df->getDataReferenceContent();
+		$this->assertNotNull ( $resultArray );
 	}
 	
 	/**
@@ -61,35 +60,17 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	/**
-	 * Tests DataReferencesDAO->getFile()
-	 */
-	public function testGetFile() {
-		$this->assertNotNull ( $this->DataReferencesDAO->getFile () );
-		$this->assertFileExists ( $this->DataReferencesDAO->getFile () );
-	}
-	
-	/**
-	 * Tests DataReferencesDAO->setFile()
-	 */
-	public function testSetFile() {
-		// TODO Auto-generated DataReferencesDAOTest->testSetFile()
-		$this->markTestIncomplete ( "setFile test not implemented" );
-		
-		$this->DataReferencesDAO->setFile(/* parameters */);
-	}
-	
-	/**
 	 * Tests DataReferencesDAO->getDataReferenceContents()
 	 */
-	public function testGetDataReferenceContentsParsingOk() {
+	public function test__constructParsingOk() {
 		$df = new DataReferencesDAO ( 'tables' );
-		$retArray = $df->getDataReferenceContents ();
-		$this->assertTrue ( gettype ( $retArray ) == "array" );
-		$this->assertNotNull ( $retArray );
-		$this->assertEquals ( 3, count ( $retArray ) );
-		$this->assertArrayHasKey ( 'lauPeuples', $retArray );
-		$this->assertArrayHasKey ( 'lauVocations', $retArray );
-		$this->assertArrayHasKey ( 'lauAvantages', $retArray );
+		$resultArray = $df->getDataReferenceContent();		
+		$this->assertTrue ( gettype ( $resultArray ) == "array" );
+		$this->assertNotNull ( $resultArray );
+		$this->assertEquals ( 3, count ( $resultArray ) );
+		$this->assertArrayHasKey ( 'lauPeuples', $resultArray );
+		$this->assertArrayHasKey ( 'lauVocations', $resultArray );
+		$this->assertArrayHasKey ( 'lauAvantages', $resultArray );
 	}
 	
 	/**
@@ -98,17 +79,34 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	 * @expectedExceptionMessage Impossible de parser le fichier
 	 * /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM/tests/testDataReferences/badDataReferences.xml
 	 */
-	public function testGetDataReferenceContentsParsingFailure() {
+	public function test__constructParsingFailure() {
 		$df = new DataReferencesDAO ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/badDataReferences.xml', true, 'root' );
-		$retArray = $df->getDataReferenceContents ();
+		$resultArray = $df->getDataReferenceContent();
+	}
+
+	/**
+	 * @expectedException LauDataFileStructureException
+	 * @expectedExceptionCode 4
+	 * @expectedExceptionMessage childNode existe dans structure - Impossible de
+	 * récupérer le contenu du fichier de données
+	 * /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM/tests/testDataReferences/badStructureFile.xml
+	 */
+	public function test__constructBadStructure() {
+		$df = new DataReferencesDAO ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/badStructureFile.xml', true, 'peuples' );
+		$resultArray = $df->getDataReferenceContent();		
 	}
 	
 	/**
-	 * Tests DataReferencesDAO->setDataReferenceContents()
+	 * @expectedException LauDataFileStructureException
+	 * @expectedExceptionCode 4
+	 * @expectedExceptionMessage Recupérer childNode valeur - Impossible de
+	 * récupérer le contenu du fichier de données
+	 * /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM/tests/testDataReferences/childNodeNotFound.xml.xml
 	 */
-	public function testSetDataReferenceContents() {
-		
-		$this->DataReferencesDAO->setDataReferenceContents(null);
+	public function test__constructChildNodeNotFound() {
+		$df = new DataReferencesDAO ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/childNodeNotFound.xml', true, 'peuples' );
+		$resultArray = $df->getDataReferenceContent();
 	}
+	
 }
 
