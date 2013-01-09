@@ -33,7 +33,8 @@ spl_autoload_register ( function ($class) {
 	$include = array (
 			WPLAUOGM_PLUGIN_CLASS_DIR,
 			WPLAUOGM_PLUGIN_DAO_CLASS_DIR,
-			WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR 
+			WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR,
+			WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR
 	);
 	$find = false;
 	foreach ( $include as $key => $value ) {

@@ -9,7 +9,7 @@
  */
 class LauDataFileStructureNotFoundException extends LauFunctionnalException {
 	/*
-	 * (non-PHPdoc) @see \lauogmClass\LauTechnicalException::__construct()
+	 * (non-PHPdoc) @see LauFunctionnalException::__construct()
 	 */
 	public function __construct($table) {
 		$message = "Impossible de trouver la structure de la tables " . $table;
@@ -18,7 +18,7 @@ class LauDataFileStructureNotFoundException extends LauFunctionnalException {
 	}
 	
 	/*
-	 * (non-PHPdoc) @see \lauogmClass\LauTechnicalException::__toString()
+	 * (non-PHPdoc) @see LauFunctionnalException::__toString()
 	 */
 	public function __toString() {
 		// TODO Auto-generated method stub

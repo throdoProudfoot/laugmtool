@@ -30,6 +30,9 @@ if (! defined ( 'WPLAUOGM_PLUGIN_DAO_CLASS_DIR' ))
 if (! defined ( 'WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR' ))
 	define ( 'WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR', WPLAUOGM_PLUGIN_CLASS_DIR . '/exception' );
 
+if (!defined('WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR'))
+	define('WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR', WPLAUOGM_PLUGIN_CLASS_DIR . '/administration');
+
 if (! defined ( 'WPLAUOGM_PLUGIN_DATA_DIR' ))
 	define ( 'WPLAUOGM_PLUGIN_DATA_DIR', WPLAUOGM_PLUGIN_DIR . '/dataReferences' );
 
@@ -45,7 +48,8 @@ spl_autoload_register ( function ($class) {
 	$include = array (
 			WPLAUOGM_PLUGIN_CLASS_DIR,
 			WPLAUOGM_PLUGIN_DAO_CLASS_DIR,
-			WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR 
+			WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR,
+			WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR 
 	);
 	$find = false;
 	foreach ( $include as $key => $value ) {

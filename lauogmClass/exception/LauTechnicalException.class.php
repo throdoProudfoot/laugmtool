@@ -5,7 +5,7 @@
  * @author throdo
  *        
  */
-class LauTechnicalException extends \Exception {
+class LauTechnicalException extends Exception {
 	/*
 	 * (non-PHPdoc) @see Exception::__construct()
 	 */
