@@ -11,8 +11,20 @@
  * @author throdo
  */
 class DataReferencesDAO {
+	
+	/**
+	 * @var array : Le contenu du fichier sous forme de tableau
+	 */
 	private $contentFile;
+	
+	/**
+	 * @var string : le noeud fils contenant le contenu data du fichier
+	 */
 	private $childNode;
+	
+	/**
+	 * @var string : le noeud racine du fichier
+	 */
 	private $root;
 	
 	/**
@@ -63,23 +75,6 @@ class DataReferencesDAO {
 	 */
 	public function setRoot($root) {
 		$this->root = $root;
-	}
-	
-	/**
-	 *
-	 * @return the $file
-	 */
-	public function getFile() {
-		return $this->contentFile;
-	}
-	
-	/**
-	 *
-	 * @param string $file        	
-	 */
-	public function setFile($file) {
-		$this->contentFile = WPLAUOGM_PLUGIN_DATA_DIR . '/' . $file . 'References.xml';
-		;
 	}
 	
 	/**
@@ -154,6 +149,9 @@ class DataReferencesDAO {
 	}
 	
 	/**
+	 * @param unknown_type $nomTable
+	 * @param unknown_type $structure
+	 * @return number
 	 */
 	public function storeDataReferenceContents($nomTable, $structure) {
 		$this->createTable ( $nomTable, $structure );
