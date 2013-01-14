@@ -1,5 +1,6 @@
 <?php
-
+// echo WPLAUOGM_PLUGIN_DIR.'/SmartyLauogm.class.php';
+// require WPLAUOGM_PLUGIN_DIR.'/SmartyLauogm.class.php';
 /*
  * To change this template, choose Tools | Templates and open the template in
  * the editor.
@@ -11,6 +12,7 @@
  * @author throdo
  */
 class LauogmPluginAdminPage {
+	private $smarty = null;
 	private $descTable = array ();
 	
 	/**
@@ -60,40 +62,42 @@ class LauogmPluginAdminPage {
 	 */
 	function settings_page() {
 		$arrayTablesReinitialisees = array ();
-		$smartyLauogmAdmin = new SmartyLauogm ( false );
+		$this->smarty = new SmartyLauogm ( true );
 		
 		try {
-			$df = new DataReferences ();
+			$tdf = new TableDataReferences ();
 		} catch ( Exception $e ) {
-			$smartyLauogmAdmin->assign ( 'erreurDetected', true );
-			$smartyLauogmAdmin->assign ( 'erreur', $e );
+			$this->smarty->assign ( 'erreurDetected', true );
 		}
 		
 		try {
-			$tables = $df->getTableList ();
-			$smartyLauogmAdmin->assign ( 'listeTables', $tables );
+			$tables = $tdf->getTableList ();
+			$this->smarty->assign ( 'listeTables', $tables );
 		} catch ( Exception $e ) {
-			$smartyLauogmAdmin->assign ( 'erreurDetected', true );
-			$smartyLauogmAdmin->assign ( 'erreur', $e );
+			$this->smarty->assign ( 'erreurDetected', true );
+			$this->assignErreur ( $e );
 		}
 		
 		// Traitement à réaliser lorsque l'on est passé dans le formulaire et
 		// que l'on a validé
 		if (isset ( $_POST ['save'] )) {
-			
 			// Récupération de la description des Tables.
 			try {
 				$arrayTablesReinitialisees = $df->processFormResult ( $_POST );
 			} catch ( LauDataFileNotFoundException $e ) {
-				$smartyLauogmAdmin->assign ( 'erreurDetected', true );
-				$smartyLauogmAdmin->assign ( 'erreur', $e );
+				$this->smarty->assign ( 'erreurDetected', true );
+				$this->assignErreur ( $e );
 			}
 			
-			$smartyLauogmAdmin->assign ( 'formValidated', true );
-			$smartyLauogmAdmin->assign ( 'listeTablesReinitialisees', $arrayTablesReinitialisees );
+			$this->smarty->assign ( 'formValidated', true );
+			$this->smarty->assign ( 'listeTablesReinitialisees', $arrayTablesReinitialisees );
 		}
 		
-		$smartyLauogmAdmin->display ( 'pluginAdmin.tpl' );
+		$this->smarty->display ( 'pluginAdmin.tpl' );
+	}
+	private function assignErreur($exception) {
+		$this->smarty->assign ( 'erreurCode', $exception->getCode () );
+		$this->smarty->assign ( 'erreurMessage', $exception->getMessage () );
 	}
 }
 

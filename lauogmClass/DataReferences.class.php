@@ -11,6 +11,10 @@
  * @author throdo
  */
 class DataReferences {
+	
+	/**
+	 * @var array : les données de réference
+	 */
 	private $content;
 
 	/**
@@ -48,37 +52,26 @@ class DataReferences {
 		}
 		
 	}
-	
+
 	/**
-	 * @return multitype:NULL unknown 
-	 */
-	public function getTableList() {
-		foreach ( $this->tableReferences as $key => $value ) {
-			$infoTables [$key] = array (
-					'libelle' => $value ['libelle'],
-					'toolTip' => $value ['description'] ['courte'] 
-			);
-		}
-		
-		return $infoTables;
-	}
-	
-	/**
-	 *
-	 * @param unknown_type $index        	
-	 * @return unknown
-	 */
-	private function getStructure($index) {
-		$tr = $this->getTableReferences ();
-		
-		if (array_key_exists ( 'structure', $tr [$index] )) {
-			$retArray = $tr [$index] ['structure'];
+	 * @param string $key
+	 * 		La clé recherchée
+	 * @param array $array
+	 * 		Le tableau dans lequel on recherche la clé
+	 * @param string $nameArray
+	 * 		Le nom du tableau affiché si il y a une exception 
+	 * @throws LauKeyInArrayNotFoundException
+	 * 		L'exception qui est levée si la clé n'est pas trouvée dans le tableau
+	 * @return 
+	 * 		la valeur du tableau si la clé existe sinon throw l'exception LauKeyInArrayNotFoundException
+	 */	
+	public function certifyKeyInArray($key, $array, $nameArray) {
+		if (array_key_exists ( $key, $array )) {
+			return $array[$key];
 		} else {
-			throw new LauDataFileStructureNotFoundException ( $tr [$index] );
+			throw new LauKeyInArrayNotFoundException($key, $nameArray);
 		}
-		
-		return $retArray;
-	}
+	}	
 	
 	/**
 	 *

@@ -44,7 +44,15 @@ class TableDataReferencesTest extends PHPUnit_Framework_TestCase {
 	 * Tests TableDataReferences->__construct()
 	 */
 	public function test__construct() {
-		$this->TableDataReferences->__construct();
+		$this->assertNotNull($this->TableDataReferences);
 	}
+	
+	/**
+	 * Tests TableDataReferences->getTableList()
+	 */
+	public function testGetTableList() {
+		$this->assertNotNull($this->TableDataReferences->getTableList());
+	}
+	
 }
 

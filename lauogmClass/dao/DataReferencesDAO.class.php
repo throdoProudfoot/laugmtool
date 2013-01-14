@@ -13,7 +13,7 @@
 class DataReferencesDAO {
 	
 	/**
-	 * @var array : Le contenu du fichier sous forme de tableau
+	 * @var string : Le fichier qui contient les données
 	 */
 	private $contentFile;
 	
@@ -107,15 +107,15 @@ class DataReferencesDAO {
 	}
 	
 	/**
-	 * @throws LauDataFileParsingException
-	 * @throws LauDataFileStructureException
-	 * @return array
+	 * @throws LauDataFileParsingException : si le parsing du fichier XML se passe mal.
+	 * @throws LauDataFileStructureException : si la structure du fichier n'est pas valide.
+	 * @return array : le contenu du fichier associé à l'objet si tout se passe bien.
 	 */
 	public function getDataReferenceContent() {
 		$dom = new DOMDocument ();
 		
 		try {
-			$returnValue = $dom->load ( $this->getFile () );
+			$returnValue = $dom->load ( $this->getContentFile() );
 		} catch ( Exception $e ) {
 			throw new LauDataFileParsingException ( $this->getFile () );
 		}

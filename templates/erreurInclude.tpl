@@ -1,6 +1,6 @@
 {* Smarty *}
 
-<h2>Erreur<h2>
+<h2>Erreur</h2>
 
-<p>Code : <b>{$erreur->code}</b></p>
-<p>{$erreur->message}
+<p>Code : <b>{$erreurCode}</b></p>
+<p>Message : {$erreurMessage}</p>
