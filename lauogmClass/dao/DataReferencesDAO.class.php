@@ -13,16 +13,19 @@
 class DataReferencesDAO {
 	
 	/**
+	 *
 	 * @var string : Le fichier qui contient les données
 	 */
 	private $contentFile;
 	
 	/**
+	 *
 	 * @var string : le noeud fils contenant le contenu data du fichier
 	 */
 	private $childNode;
 	
 	/**
+	 *
 	 * @var string : le noeud racine du fichier
 	 */
 	private $root;
@@ -86,9 +89,8 @@ class DataReferencesDAO {
 	 *        	si true alors chemin du fichier en absolue
 	 *        	sinon juste le type de fichier à prendre
 	 * @param string $root
-	 * 			le node root du document XML        
-	 * @throws LauDataFileNotFoundException 
-	 * 			Si le fichier est introuvable
+	 *        	le node root du document XML
+	 * @throws LauDataFileNotFoundException Si le fichier est introuvable
 	 */
 	function __construct($dataFileType, $absolute = false, $root = null) {
 		if (! $absolute) {
@@ -107,33 +109,49 @@ class DataReferencesDAO {
 	}
 	
 	/**
-	 * @throws LauDataFileParsingException : si le parsing du fichier XML se passe mal.
-	 * @throws LauDataFileStructureException : si la structure du fichier n'est pas valide.
-	 * @return array : le contenu du fichier associé à l'objet si tout se passe bien.
+	 *
+	 * @throws LauDataFileParsingException : si le parsing du fichier XML se
+	 *         passe mal.
+	 * @throws LauDataFileStructureException : si la structure du fichier n'est
+	 *         pas valide.
+	 * @return array : le contenu du fichier associé à l'objet si tout se passe
+	 *         bien.
 	 */
 	public function getDataReferenceContent() {
 		$dom = new DOMDocument ();
-		
 		try {
-			$returnValue = $dom->load ( $this->getContentFile() );
+			$returnValue = $dom->load ( $this->getContentFile () );
 		} catch ( Exception $e ) {
 			throw new LauDataFileParsingException ( $this->getFile () );
 		}
-		
 		$retArray = XML2Array::createArray ( $dom );
 		$step = "Utilisation de XML2Array ok";
 		if (gettype ( $retArray ) == 'array') {
 			$step = "Recupérer childNode valeur";
 			if (array_key_exists ( 'childNode', $retArray [$this->root] ['@attributes'] )) {
 				$this->childNode = $retArray [$this->root] ['@attributes'] ['childNode'];
+				
 				if (array_key_exists ( $this->childNode, $retArray [$this->root] )) {
 					$step = "childNode existe dans structure";
 					foreach ( $retArray [$this->root] [$this->childNode] as $key => $value ) {
-						if (array_key_exists ( 'nom', $value )) {
-							$resultArray [$value ['nom']] = $value;
+						/*
+						 * Premier traitement si il y a plus de 1 enr dans le fichier XML donc on a un tableau
+						 * Else si il n'y a qu'un seul enr dans le fichier XML
+						 */
+						if (gettype ( $value ) == 'array') {
+							if (array_key_exists ( 'nom', $value )) {
+								$resultArray [$value ['nom']] = $value;
+							} else {
+								$resultArray = null;
+								break;
+							}
 						} else {
-							$resultArray = null;
-							break;
+							if (array_key_exists ( 'nom', $retArray [$this->root] [$this->childNode] )) {
+								$resultArray [$retArray [$this->root] [$this->childNode] ['nom']] = $retArray [$this->root] [$this->childNode];
+							} else {
+								$resultArray = null;
+								break;
+							}
 						}
 					}
 				}
@@ -141,16 +159,17 @@ class DataReferencesDAO {
 		} else {
 			throw new LauDataFileStructureException ( $this->getFile () );
 		}
-		
 		if (gettype ( $resultArray ) != 'array') {
+			echo "exception step = $step";
 			throw new LauDataFileStructureException ( $this->getFile (), $step );
 		}
 		return $resultArray;
 	}
 	
 	/**
-	 * @param unknown_type $nomTable
-	 * @param unknown_type $structure
+	 *
+	 * @param unknown_type $nomTable        	
+	 * @param unknown_type $structure        	
 	 * @return number
 	 */
 	public function storeDataReferenceContents($nomTable, $structure) {

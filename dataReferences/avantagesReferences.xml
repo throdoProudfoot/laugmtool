@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE root SYSTEM "avantagesReferences.dtd"> 
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+<!-- <!DOCTYPE avantages SYSTEM "avantagesReferences.dtd"> -->
+
+<!-- To change this template, choose Tools | Templates and open the template 
+	in the editor. -->
 
 <avantages childNode="avantage">
-    <avantage>
-        <nom>Infatiguable</nom>
-        <descriptif>La détermination légendaire des Nains leur permet de supporter des fardeaux qui briseraient le dos des plus robustes des hommes.
-            Un personnage Nain calcule son seuil de Fatigue en ajoutant les valeurs d'Encombrement de tous les objets qu'il porte, puis en soustrayant à ce total sa valeur améliorée de Coeur.
-        </descriptif>
-    </avantage>
+	<avantage>
+		<nom>Infatiguable</nom>
+		<description>La détermination légendaire des Nains leur permet de
+			supporter des fardeaux qui briseraient le dos des plus robustes des
+			hommes.
+			Un personnage Nain calcule son seuil de Fatigue en ajoutant
+			les valeurs
+			d'Encombrement de tous les objets qu'il porte, puis en
+			soustrayant à
+			ce total sa valeur améliorée de Coeur.
+		</description>
+	</avantage>
 </avantages>

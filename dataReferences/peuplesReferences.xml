@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE root SYSTEM "peuplesReferences.dtd">
+<!-- <!DOCTYPE peuples SYSTEM "peuplesReferences.dtd"> -->
 
 <!-- To change this template, choose Tools | Templates and open the template 
 	in the editor. -->
@@ -10,7 +10,8 @@
 		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
-			trône dans les anciennes salles.</introduction>
+			trône dans les anciennes salles.
+		</introduction>
 		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
 			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
 			versants, au cours de longues et profondes excavations. Lampes et
@@ -29,7 +30,8 @@
 		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
-			trône dans les anciennes salles.</introduction>
+			trône dans les anciennes salles.
+		</introduction>
 		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
 			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
 			versants, au cours de longues et profondes excavations. Lampes et
@@ -48,7 +50,8 @@
 		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
-			trône dans les anciennes salles.</introduction>
+			trône dans les anciennes salles.
+		</introduction>
 		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
 			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
 			versants, au cours de longues et profondes excavations. Lampes et
@@ -67,7 +70,8 @@
 		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
-			trône dans les anciennes salles.</introduction>
+			trône dans les anciennes salles.
+		</introduction>
 		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
 			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
 			versants, au cours de longues et profondes excavations. Lampes et
@@ -86,7 +90,8 @@
 		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
-			trône dans les anciennes salles.</introduction>
+			trône dans les anciennes salles.
+		</introduction>
 		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
 			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
 			versants, au cours de longues et profondes excavations. Lampes et
@@ -102,10 +107,12 @@
 	</peuple>
 	<peuple>
 		<nom>Nain du Mont-Solitaire</nom>
-		<descriptionCourte>Nain d'Erebor, peuple de Thorin Ecudechêne</descriptionCourte>
+		<descriptionCourte>Nain d'Erebor, peuple de Thorin Ecudechêne
+		</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
-			trône dans les anciennes salles.</introduction>
+			trône dans les anciennes salles.
+		</introduction>
 		<descriptionLongue>Quand les Nains s'établirent en Erebor, le Mont
 			Solitaire, ils façonnèrent un royaume de pierre et de gemmes sous ses
 			versants, au cours de longues et profondes excavations. Lampes et

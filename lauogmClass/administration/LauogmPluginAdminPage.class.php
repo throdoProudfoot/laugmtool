@@ -83,7 +83,7 @@ class LauogmPluginAdminPage {
 		if (isset ( $_POST ['save'] )) {
 			// Récupération de la description des Tables.
 			try {
-				$arrayTablesReinitialisees = $df->processFormResult ( $_POST );
+				$arrayTablesReinitialisees = $this->processFormResult ( $tables, $_POST, $tdf );
 			} catch ( LauDataFileNotFoundException $e ) {
 				$this->smarty->assign ( 'erreurDetected', true );
 				$this->assignErreur ( $e );
@@ -95,9 +95,46 @@ class LauogmPluginAdminPage {
 		
 		$this->smarty->display ( 'pluginAdmin.tpl' );
 	}
+	
+	/**
+	 * Fonction qui permet d'assigner le contenu d'une exception dans un
+	 * template d'erreur.
+	 *
+	 * @param unknown_type $exception        	
+	 */
 	private function assignErreur($exception) {
 		$this->smarty->assign ( 'erreurCode', $exception->getCode () );
 		$this->smarty->assign ( 'erreurMessage', $exception->getMessage () );
+	}
+	
+	/**
+	 *
+	 * @param array $post        	
+	 * @throws Exception
+	 * @return array $retArray
+	 */
+	public function processFormResult($pTables, $pPost, $pTableRef) {
+		$retArray = array ();
+		foreach ( $pTables as $key => $value ) {
+			if (isset ( $pPost [$key] )) {
+				try {					
+					$dataRef = strtolower ( $value ['libelle'] );
+					$dr = new DataReferences ( $dataRef );
+				} catch ( Exception $e ) {
+					$this->smarty->assign ( 'erreurDetected', true );
+					$this->assignErreur ( $e );
+				}
+				try {
+					$structure =  $pTableRef->getStructure($key);
+				} catch ( Exception $e ) {
+					$this->smarty->assign ( 'erreurDetected', true );
+					$this->assignErreur ( $e );
+				}
+				//$dr->storeDataRef ();
+				array_push ( $retArray, $dataRef );
+			}
+		}
+		return $retArray;
 	}
 }
 

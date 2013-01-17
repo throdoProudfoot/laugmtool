@@ -20,9 +20,8 @@ class TableDataReferences extends DataReferences {
 	 * @param unknown_type $index        	
 	 * @return unknown
 	 */
-	private function getStructure($index) {
+	public function getStructure($index) {
 		$tr = $this->getContent ();
-		
 		if (array_key_exists ( 'structure', $tr [$index] )) {
 			$retArray = $tr [$index] ['structure'];
 		} else {
