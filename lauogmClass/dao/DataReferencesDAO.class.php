@@ -93,6 +93,7 @@ class DataReferencesDAO {
 	 * @throws LauDataFileNotFoundException Si le fichier est introuvable
 	 */
 	function __construct($dataFileType, $absolute = false, $root = null) {
+		echo "DataReferencesDAO Debut ( $dataFileType )";
 		if (! $absolute) {
 			$filename = WPLAUOGM_PLUGIN_DATA_DIR . '/' . $dataFileType . 'References.xml';
 			$this->root = $dataFileType;
@@ -100,12 +101,13 @@ class DataReferencesDAO {
 			$filename = $dataFileType;
 			$this->root = $root;
 		}
-		
+		echo "DataReferencesDAO Milieu ( $dataFileType )";
 		if (file_exists ( $filename )) {
 			$this->contentFile = $filename;
 		} else {
 			throw new LauDataFileNotFoundException ( $filename );
 		}
+		echo "DataReferencesDAO Fin ( $dataFileType )";
 	}
 	
 	/**
@@ -135,8 +137,9 @@ class DataReferencesDAO {
 					$step = "childNode existe dans structure";
 					foreach ( $retArray [$this->root] [$this->childNode] as $key => $value ) {
 						/*
-						 * Premier traitement si il y a plus de 1 enr dans le fichier XML donc on a un tableau
-						 * Else si il n'y a qu'un seul enr dans le fichier XML
+						 * Premier traitement si il y a plus de 1 enr dans le
+						 * fichier XML donc on a un tableau Else si il n'y a
+						 * qu'un seul enr dans le fichier XML
 						 */
 						if (gettype ( $value ) == 'array') {
 							if (array_key_exists ( 'nom', $value )) {
@@ -168,35 +171,48 @@ class DataReferencesDAO {
 	
 	/**
 	 *
-	 * @param unknown_type $nomTable        	
-	 * @param unknown_type $structure        	
+	 * @param unknown_type $pNomTable        	
+	 * @param unknown_type $pStructure        	
 	 * @return number
 	 */
-	public function storeDataReferenceContents($nomTable, $structure) {
-		$this->createTable ( $nomTable, $structure );
-		$this->storeData ( $nomTable, $structure, $this->setDataContent () );
+	public function storeDataReferenceContents($pNomTable, $pStructure, $pContent) {
+		$this->createTable ( $pNomTable, $pStructure );
+		$this->storeData ( $pNomTable, $pStructure, $pContent );
 		return 0;
 	}
 	
 	/**
 	 *
-	 * @param unknown_type $nomTable        	
-	 * @param unknown_type $structure        	
+	 * @param unknown_type $pNomTable        	
+	 * @param unknown_type $pStructure        	
 	 * @param unknown_type $data        	
 	 */
-	private function createTable($nomTable, $structure) {
+	private function createTable($pNomTable, $pStructure) {
 		global $wpdb;
 		
-		$table_name = $wpdb->prefix . $nomTable;
+		$table_name = $wpdb->prefix . $pNomTable;
 		
 		$dynDropTable = "DROP TABLE IF EXISTS `" . $table_name . "`;";
 		
 		$e = $wpdb->query ( $dynDropTable );
-		// echo '$dynDropTable = ' . $dynDropTable . '<hr>';
 		
 		$dynCreateTable = "CREATE TABLE " . $table_name . " (";
 		
-		foreach ( $structure [colonne] as $key => $value ) {
+		if (gettype ( $pStructure ['colonne'] [0] ) == 'array') {
+			foreach ( $pStructure ['colonne'] as $key => $value ) {
+				$dynCreateTable .= ' ' . $value ['nom'];
+				switch ($value ['type']) {
+					case 'indexAuto' :
+						$tableIndex = $value ['nom'];
+						$dynCreateTable .= " MEDIUMINT NOT NULL AUTO_INCREMENT,";
+						break;
+					default :
+						$dynCreateTable .= " " . $value ['type'] . " " . strtoupper ( $value ['null'] ) . ",";
+						break;
+				}
+			}
+		} else {
+			$value = $pStructure ['colonne'];
 			$dynCreateTable .= ' ' . $value ['nom'];
 			switch ($value ['type']) {
 				case 'indexAuto' :
@@ -207,18 +223,6 @@ class DataReferencesDAO {
 					$dynCreateTable .= " " . $value ['type'] . " " . strtoupper ( $value ['null'] ) . ",";
 					break;
 			}
-			// foreach ( $value->attributes () as $k => $v ) {
-			// if ($k == 'type') {
-			// $dynCreateTable .= ' ' . strtoupper ( $v );
-			// }
-			// if ($k == 'nullable') {
-			// if ($v == 'Yes') {
-			// $dynCreateTable .= ' NULL,';
-			// } else {
-			// $dynCreateTable .= ' NOT NULL,';
-			// }
-			// }
-			// }
 		}
 		
 		$dynCreateTable .= ' PRIMARY KEY  (' . $tableIndex . '));';
@@ -227,18 +231,18 @@ class DataReferencesDAO {
 	
 	/**
 	 *
-	 * @param unknown_type $nomTable        	
-	 * @param unknown_type $structure        	
+	 * @param unknown_type $pNomTable        	
+	 * @param unknown_type $pStructure        	
 	 * @param unknown_type $data        	
 	 * @return number
 	 */
-	private function storeData($nomTable, $structure, $data) {
+	private function storeData($pNomTable, $pStructure, $data) {
 		global $wpdb;
 		
-		$table_name = $wpdb->prefix . $nomTable;
+		$table_name = $wpdb->prefix . $pNomTable;
 		
 		$ajouteVirgule = false;
-		foreach ( $structure [colonne] as $key => $value ) {
+		foreach ( $pStructure ['colonne'] as $key => $value ) {
 			if ($ajouteVirgule) {
 				$dynListColonne .= ',';
 			}

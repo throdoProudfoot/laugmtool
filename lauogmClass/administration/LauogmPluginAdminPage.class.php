@@ -117,7 +117,7 @@ class LauogmPluginAdminPage {
 		$retArray = array ();
 		foreach ( $pTables as $key => $value ) {
 			if (isset ( $pPost [$key] )) {
-				try {					
+				try {
 					$dataRef = strtolower ( $value ['libelle'] );
 					$dr = new DataReferences ( $dataRef );
 				} catch ( Exception $e ) {
@@ -125,12 +125,12 @@ class LauogmPluginAdminPage {
 					$this->assignErreur ( $e );
 				}
 				try {
-					$structure =  $pTableRef->getStructure($key);
+					$structure = $pTableRef->getStructure ( $key );
 				} catch ( Exception $e ) {
 					$this->smarty->assign ( 'erreurDetected', true );
 					$this->assignErreur ( $e );
 				}
-				//$dr->storeDataRef ();
+				$dr->storeDataRef ( $key, $structure );
 				array_push ( $retArray, $dataRef );
 			}
 		}

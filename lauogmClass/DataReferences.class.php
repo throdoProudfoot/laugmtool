@@ -82,8 +82,8 @@ class DataReferences {
 	
 	/**
 	 */
-	public function storeDataRef() {
-		// $this->drd->storeDataReferenceContents($nomTable, $structure);
+	public function storeDataRef($pNomTable, $pStructure) {
+		$this->drd->storeDataReferenceContents($pNomTable, $pStructure,$this->getContent());
 	}
 }
 
