@@ -1,25 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- <!DOCTYPE root SYSTEM "vocationsReferences.dtd">  --> 
+<!-- <!DOCTYPE root SYSTEM "vocationsReferences.dtd"> -->
 
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+<!-- To change this template, choose Tools | Templates and open the template 
+	in the editor. -->
 
 <vocations childNode="vocation">
-    <vocation>
-        <nom>Chasseur de Trésor</nom>
-        <description>Ce monde a été témoin de la gloire de nombreux seigneurs Elfes et rois Nains, et leur héritage est désormais enfoui en des souterrain profonds et des grottes sombres. L'or pâle et les joyaux rutilants attendent ceux qui osent les chercher. Qu'il s'agisse d'un trésor de famille volé par des pillards gobelins ou du butin fabuleux d'un Dragon, vous avez décidé de retrouver un bien perdu, même si cela va vous demander de braver des dangers indicibles.
-        </description>           
-    </vocation>
-    <vocation>
-        <nom>Tueur</nom>
-        <description>Vous ou votre famille avez subit une terrible disparition, provoquée par quelqu'un ou quelque chose (à définir). Vous êtes devenu aventurier pour faire payer celui qui vous a causé du tort, à moins que ce soit pour renoncer à une existence que vous ne parveniez plus à apprécier. Votre voie est ardue, car ce que vous avez vécu vous pousse à vous méfier de tous.
-        </description>           
-    </vocation>
-    <vocation>
-        <nom>Protecteur</nom>
-        <description>En cette époque où les ombres se font plus profondes chaque année, vous avez juré de protéger tous ceux qui ne peuvent se défendre seuls. Souvent, cet engagement vous oblige à abandonner la civilisation pour mieux garder ses habitants de tout ce qui se tapit de l'autre côté de leurs clôtures. Vous êtes ainsi devenu un étranger aux yeux du peuple, une silhouette aussi inquiétante que ceux contre lesquels vous le protégez.
-        </description>           
-    </vocation>        
+	<vocation>
+		<nom>Chasseur de Trésor</nom>
+		<description>Ce monde a été témoin de la gloire de nombreux seigneurs
+			Elfes et rois Nains, et leur héritage est désormais enfoui en des
+			souterrain profonds et des grottes sombres. L'or pâle et les joyaux
+			rutilants attendent ceux qui osent les chercher. Qu'il s'agisse d'un
+			trésor de famille volé par des pillards gobelins ou du butin fabuleux
+			d'un Dragon, vous avez décidé de retrouver un bien perdu, même si
+			cela va vous demander de braver des dangers indicibles.
+		</description>
+	</vocation>
+	<vocation>
+		<nom>Tueur</nom>
+		<description>Vous ou votre famille avez subit une terrible
+			disparition, provoquée par quelqu'un ou quelque chose (à définir).
+			Vous êtes devenu aventurier pour faire payer celui qui vous a causé
+			du tort, à moins que ce soit pour renoncer à une existence que vous
+			ne parveniez plus à apprécier. Votre voie est ardue, car ce que vous
+			avez vécu vous pousse à vous méfier de tous.
+		</description>
+	</vocation>
+	<vocation>
+		<nom>Protecteur</nom>
+		<description>En cette époque où les ombres se font plus profondes
+			chaque année, vous avez juré de protéger tous ceux qui ne peuvent se
+			défendre seuls. Souvent, cet engagement vous oblige à abandonner la
+			civilisation pour mieux garder ses habitants de tout ce qui se tapit
+			de l'autre côté de leurs clôtures. Vous êtes ainsi devenu un étranger
+			aux yeux du peuple, une silhouette aussi inquiétante que ceux contre
+			lesquels vous le protégez.
+		</description>
+	</vocation>
+	<vocation>
+		<nom>Érudit</nom>
+		<description>Le savoir est pour vous le moyen de rendre le monde
+			sauvage moins menaçant. Les étrangers se transforment en amis quand
+			on sait leur parler, les cartes jaunies des livres oubliées
+			remplacent la peur de l'inconnu en curiosité et émerveillement des
+			lieux qu'il vous reste à explorer. Les chansons d'antan enhardissent
+			les coeurs les plus las. Votre passion de la connaissance guide
+			chacun de vos pas et illumine votre voie, comme celle de ceux qui
+			écoutent vos conseils.</description>
+	</vocation>
+	<vocation>
+		<nom>Vagabond</nom>
+		<description>En cette époque où les ombres se font plus profondes
+			chaque année, vous avez juré de protéger tous ceux qui ne peuvent se
+			défendre seuls. Souvent, cet engagement vous oblige à abandonner la
+			civilisation pour mieux garder ses habitants de tout ce qui se tapit
+			de l'autre côté de leurs clôtures. Vous êtes ainsi devenu un étranger
+			aux yeux du peuple, une silhouette aussi inquiétante que ceux contre
+			lesquels vous le protégez.</description>
+	</vocation>
+
 </vocations>

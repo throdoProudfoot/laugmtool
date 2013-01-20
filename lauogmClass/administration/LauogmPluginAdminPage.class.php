@@ -1,6 +1,5 @@
 <?php
-// echo WPLAUOGM_PLUGIN_DIR.'/SmartyLauogm.class.php';
-// require WPLAUOGM_PLUGIN_DIR.'/SmartyLauogm.class.php';
+
 /*
  * To change this template, choose Tools | Templates and open the template in
  * the editor.

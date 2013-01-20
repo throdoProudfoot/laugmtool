@@ -93,7 +93,6 @@ class DataReferencesDAO {
 	 * @throws LauDataFileNotFoundException Si le fichier est introuvable
 	 */
 	function __construct($dataFileType, $absolute = false, $root = null) {
-		echo "DataReferencesDAO Debut ( $dataFileType )";
 		if (! $absolute) {
 			$filename = WPLAUOGM_PLUGIN_DATA_DIR . '/' . $dataFileType . 'References.xml';
 			$this->root = $dataFileType;
@@ -101,13 +100,12 @@ class DataReferencesDAO {
 			$filename = $dataFileType;
 			$this->root = $root;
 		}
-		echo "DataReferencesDAO Milieu ( $dataFileType )";
+
 		if (file_exists ( $filename )) {
 			$this->contentFile = $filename;
 		} else {
 			throw new LauDataFileNotFoundException ( $filename );
 		}
-		echo "DataReferencesDAO Fin ( $dataFileType )";
 	}
 	
 	/**
@@ -163,7 +161,6 @@ class DataReferencesDAO {
 			throw new LauDataFileStructureException ( $this->getFile () );
 		}
 		if (gettype ( $resultArray ) != 'array') {
-			echo "exception step = $step";
 			throw new LauDataFileStructureException ( $this->getFile (), $step );
 		}
 		return $resultArray;

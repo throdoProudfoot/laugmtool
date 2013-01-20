@@ -17,4 +17,29 @@
 			ce total sa valeur améliorée de Coeur.
 		</description>
 	</avantage>
+	<avantage>
+		<nom>Intrépide</nom>
+		<description>
+			Vivre toutes ces années sous la menace permanente de
+			Smaug leTerrible a insuflé un grand courage à la race des Bardides.
+			Rares sont en effet les créatures plus redoutables qu'un Grand Dragon
+			...
+			Lorsqu'il effectue un test de Peur, un personnage Bardide peut
+			lancer le dé du Destin 2 fois pour ne garder que le meilleur
+			résultat.
+		</description>
+	</avantage>
+	<avantage>
+		<nom>Peuple du Crépuscule</nom>
+		<description>Quoique très respectueux du soleil, les Elfes de la Forêt
+			Noire se sentent bien plus à leur aise au clair de lune ou sous les
+			étoiles, ou encore parmi les ombres des bois ; leurs sens y sont plus
+			affûtés, leurs mouvements incroyablement sûrs et gracieux.
+			Quand un
+			Elfe de la Forêt Noire se trouve dans une forêt ou sous terre, ou
+			bien s'il fait nuit, tous ses bonus d'attribut sont basés sur la
+			valeur améliorée de l'attribut.
+		</description>
+	</avantage>
+
 </avantages>

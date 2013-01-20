@@ -44,7 +44,8 @@
 	<trait>
 		<nom>Résistant</nom>
 		<description>Vous pouvez travailler et voyager pendant des heures sans
-			vous reposer ou malgrè des conditions extrêmes.</description>
+			vous reposer ou malgrè des conditions extrêmes.
+		</description>
 	</trait>
 	<trait>
 		<nom>Téméraire</nom>
@@ -52,4 +53,91 @@
 			osez faire des choses auxquelles d'autres ne penseraient même pas.
 		</description>
 	</trait>
+	<!-- Spécialités -->
+	<trait>
+		<nom>Batelier</nom>
+		<description>Vous êtes capable de manoeuvrer une embarcation dans les
+			eaux vives d'une rivière ou dans les courants imprévisibles d'un lac.
+		</description>
+	</trait>
+	<trait>
+		<nom>Commerce</nom>
+		<description>Vous êtes parfaitement à l'aise lorsque vous négociez
+			l'achat ou la vente d'objets, voire de renseignements.
+		</description>
+	</trait>
+	<trait>
+		<nom>Forge</nom>
+		<description>Vous aimez produire des objets au moyen du marteau et de
+			l'enclume et avez passé des centaines d'heures près du feu brulant de
+			la forge. Vous êtes capable de juger de la qualité de la plupart des
+			objets composés de métal.
+		</description>
+	</trait>
+	<trait>
+		<nom>Fumer</nom>
+		<description>Pratique parfaite de l'art de fumer la pipe. Ceux qui
+			pratiquent cet art prétendent qu'il leur confère patience, clarté
+			d'esprit, qu'il les aide considérablement à se détendre, à se
+			concentrer et à discuter en toute quiétude avec leur prochaine.
+		</description>
+	</trait>
+	<trait>
+		<nom>Menuisier</nom>
+		<description>Vous exercez depuis longtemps l'art qui consiste à couper
+			et sculpter du bois avec adresse pour produire des objets beaux ou
+			utiles. Vous pouvez facilement réparer un objet brisé ou même une
+			arme incluant des éléments en bois.
+		</description>
+	</trait>
+	<trait>
+		<nom>Natation</nom>
+		<description>Vous êtes un bon nageur et pouvez traverser un cours
+			d'eau rapide ou nager longtemps sur de grandes distances.
+		</description>
+	</trait>
+	<trait>
+		<nom>Tradition ancienne</nom>
+		<description>Vous êtes versé dans les traditions et rumeurs de
+			l'ancien temps. Votre savoir découle sans doute de plusieurs sources,
+			des histoires entendues au coin du feux aux archives poussiéreuses
+			d'un chroniqueur.
+		</description>
+	</trait>
+	<trait>
+		<nom>Allume-Feu</nom>
+		<description>Si nécessaire, vous êtes capable d'allumer un feu à peu
+			près n'importe où, avec à peu près n'importe quoi.
+		</description>
+	</trait>
+	<trait>
+		<nom>Troglodyte</nom>
+		<description>Vous êtes habitué aux difficultés propres aux déplacement
+			dans les tunnels et galeries creusés sous terre. Il vous est, par
+			exemple, difficile d'y perdre votre sens de l'orientation.
+		</description>
+	</trait>
+	<trait>
+		<nom>Connaissance Elfique</nom>
+		<description>Mémoire des trois âges du monde, les connaissances
+			elfiques regroupent les souvenirs des exploits et lieux oubliés de la
+			Tradition ancienne des autres races. Vous connaissez aussi la langue
+			ancienne des elfes vivant de l'autre côté de la Mer.
+		</description>
+	</trait>
+	<trait>
+		<nom>Connaissance régionales (Forêt Noire)</nom>
+		<description>Vous pouvez faire appel à votre connaissance d'une région
+			quand vous comptez la traverser dans le cadre d'un voyage.
+		</description>
+	</trait>
+	<trait>
+		<nom>Natation</nom>
+		<description>Vous êtes un bon nageur et pouvez traverser un cours
+			d'eau rapide ou nager longtemps sur de grandes distances.
+		</description>
+	</trait>
+
+
+
 </traits>
