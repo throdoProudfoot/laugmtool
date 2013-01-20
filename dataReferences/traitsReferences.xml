@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE traits SYSTEM "traitsReferences.dtd"> -->
+
+<!-- To change this template, choose Tools | Templates and open the template 
+	in the editor. -->
+
+<traits childNode="trait">
+	<trait>
+		<nom>Astucieux</nom>
+		<description>Vous êtes ingénieux et dégourdi, apprenez vite et
+			procédez par intuition.
+		</description>
+	</trait>
+	<trait>
+		<nom>Audacieux</nom>
+		<description>Vous êtes attiré par les expériences et les défis
+			nouveaux, notamment quand il vous semble assez périlleux pour mettre
+			votre courage à l'épreuve.
+		</description>
+	</trait>
+	<trait>
+		<nom>Beau</nom>
+		<description>La plus part des gens, y compris ceux qui ne sont pas de
+			votre peuple, vous trouvent beau.
+		</description>
+	</trait>
+	<trait>
+		<nom>Majestueux</nom>
+		<description>Votre port altier inspire respect et révérence.
+		</description>
+	</trait>
+	<trait>
+		<nom>Fier</nom>
+		<description>Vous faites grand cas de vos exploits ou de ceux de votre
+			peuple.
+		</description>
+	</trait>
+	<trait>
+		<nom>Grand</nom>
+		<description>Votre taille dépasse celle de la plus part des gens de
+			votre peuple.
+		</description>
+	</trait>
+	<trait>
+		<nom>Résistant</nom>
+		<description>Vous pouvez travailler et voyager pendant des heures sans
+			vous reposer ou malgrè des conditions extrêmes.</description>
+	</trait>
+	<trait>
+		<nom>Téméraire</nom>
+		<description>Vous songez rarement aux conséquences de vos actes et
+			osez faire des choses auxquelles d'autres ne penseraient même pas.
+		</description>
+	</trait>
+</traits>

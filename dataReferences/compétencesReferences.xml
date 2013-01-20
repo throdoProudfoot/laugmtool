@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE compétences SYSTEM "compétencesReferences.dtd"> -->
+
+<!-- To change this template, choose Tools | Templates and open the template 
+	in the editor. -->
+
+<compétences childNode="compétence">
+	<compétence>
+		<nom>Vigilance</nom>
+		<description>La vigilance regroupe les facultés de réaction du héros,
+			mais elle lui permet aussi de remarquer quelque chose d'inattendu,
+			qui sort de l'ordinaire ou qui est difficilement détectable.
+		</description>
+	</compétence>
+	<compétence>
+		<nom>Intuition</nom>
+		<description>L'intuition permet de voir au-delà des apparences, de
+			prendre conscience des croyances et des pensées cachées d'autrui. Le
+			héros doté de cette compétence reconnaitront les menteurs et tireront
+			des conclusions utiles au sujet des motivations des gens.
+		</description>
+	</compétence>
+	<compétence>
+		<nom>Connaissance</nom>
+		<description>Cette compétence reflète le gout de l'apprentissage du
+			héros, qu'il sagisse d'une véritable fascination pour les
+			descriptions de terres lointaines ou d'un intérêt pour la généalogie.
+			Quand une action implique un quelconque savoir, un jet de
+			connaissance est nécessaire. Les Héros connnaissent les tradition de
+			leur peuple. Ainsi le Gardien des Légendes demandera rarement à un
+			joueur d'effectuer un test de connaissance pour des informations
+			ayant trait à la culture, aux origines et à la région natale de son
+			personnage.
+		</description>
+	</compétence>
+	<compétence>
+		<nom>Art de la Guerre</nom>
+		<description>Grâce à cette compétence, le héros connait les règles qui
+			régissent le déroulement d'une bataille et peut éviter de se faire
+			tuer quand l'engagement prend une tornure particulièrement brutale.
+			L'art de la guerre permet de bénéficier d'une avantage face à un
+			groupe d'adversaires, mais également de mener une compagnie d'hommes
+			au combat et de maintenir l'ordre parmi les troupes malgré la
+			confusion ambiante (le combat quand à lui dépend des compétences
+			d'armes du personnage).</description>
+	</compétence>
+	<compétence>
+		<nom>Artisanat</nom>
+		<description>Cette compétence n'englobe pas vraiment le savoir-faire
+			du forgeron, du charpentier ou des autres corps de métier de
+			l'artisanat. Elle démontre simplement le talent dont fait preuve le
+			personnage qui crée ou répare des objets manuellement. Les traits
+			comme Forge ou Menuisier peuvent quand à eux un certains savoir-faire
+			dans une forme d'artisanat précise. L'artisanat peut servir à réparer
+			une roue de charette, à construire un radeau improvisé avec du bois
+			trouvé sur la berge d'un cours d'eau, ou bien à allumer un feu sur
+			une colline exposée au vent. Une valeur d'artisanat élévée signifiera
+			peut être que le héros a été artisan avant d'entreprendre une vie
+			d'aventurier .
+		</description>
+	</compétence>
+	<compétence>
+		<nom>Fouille</nom>
+		<description>Un héros utilise sa compétence de Fouille quand il tente
+			de trouver quelques chose au moyen d'un examen minutieux. Avec cette
+			compétence, il peut faire des recherches dans une bibliothèque pour y
+			découvrir un renseignement intéressant, trouver une porte cachée ou
+			des inscriptions dissimulés, reconnaître un visage familier dans une
+			foule ou même fouiller un voleur présumé.
+		</description>
+	</compétence>
+</compétences>

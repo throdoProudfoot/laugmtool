@@ -92,7 +92,18 @@
 			<colonne>
 				<nom>idVocation</nom>
 				<type>indexAuto</type>
+				<null>null</null>
 			</colonne>
+			<colonne>
+				<nom>nomVocation</nom>
+				<type>varchar(30)</type>
+				<null>not null</null>
+			</colonne>
+			<colonne>
+				<nom>descriptionVocation</nom>
+				<type>tinytext</type>
+				<null>not null</null>
+			</colonne>			
 		</structure>
 	</table>
 	<table>
@@ -105,9 +116,72 @@
 		</description>
 		<structure>
 			<colonne>
-				<nom>idAvantages</nom>
+				<nom>idAvantage</nom>
 				<type>indexAuto</type>
+				<null>null</null>
 			</colonne>
-		</structure>		
+			<colonne>
+				<nom>nomAvantage</nom>
+				<type>varchar(30)</type>
+				<null>not null</null>
+			</colonne>
+			<colonne>
+				<nom>descriptionAvantage</nom>
+				<type>tinytext</type>
+				<null>not null</null>
+			</colonne>
+		</structure>
 	</table>
+	<table>
+		<nom>lauCompetences</nom>
+		<libelle>Compétences</libelle>
+		<description>
+			<courte>Description des compétences</courte>
+			<longue>Table contenant la description des différentes compétences
+				disponibles dans le jeu de rôle - L'Anneau Unique</longue>
+		</description>
+		<structure>
+			<colonne>
+				<nom>idCompetence</nom>
+				<type>indexAuto</type>
+				<null>null</null>
+			</colonne>
+			<colonne>
+				<nom>nomCompetence</nom>
+				<type>varchar(30)</type>
+				<null>not null</null>
+			</colonne>
+			<colonne>
+				<nom>descriptionCompetence</nom>
+				<type>tinytext</type>
+				<null>not null</null>
+			</colonne>
+		</structure>
+	</table>		
+	<table>
+		<nom>lauTraits</nom>
+		<libelle>Traits</libelle>
+		<description>
+			<courte>Description des traits</courte>
+			<longue>Table contenant la description des différentes traits
+				disponibles dans le jeu de rôle - L'Anneau Unique</longue>
+		</description>
+		<structure>
+			<colonne>
+				<nom>idTrait</nom>
+				<type>indexAuto</type>
+				<null>null</null>
+			</colonne>
+			<colonne>
+				<nom>nomTrait</nom>
+				<type>varchar(30)</type>
+				<null>not null</null>
+			</colonne>
+			<colonne>
+				<nom>descriptionTrait</nom>
+				<type>tinytext</type>
+				<null>not null</null>
+			</colonne>
+		</structure>
+	</table>		
 </tables>
