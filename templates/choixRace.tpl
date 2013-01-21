@@ -8,8 +8,8 @@
 
     <b><u>Liste des peuples disponibles :</u></b>
     <ul>
-    {foreach from=$listePeuples item=peuple}
-        <li>{$peuple->nom}</li>
+    {foreach from=$listePeuples key=k item=peuple}
+        <li>{$peuple}</li>
     {foreachelse}
         No items were found in the search        
     {/foreach}    

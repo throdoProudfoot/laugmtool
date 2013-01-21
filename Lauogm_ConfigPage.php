@@ -38,4 +38,7 @@ if (!defined('WPLAUOGM_PLUGIN_DATA_DIR'))
 if (!defined('WPLAUOGM_DEBUG_MODE'))
     define('WPLAUOGM_DEBUG_MODE', true);
 
+if (!defined('WPLAUOGM_PEUPLES_TABLE'))
+	define('WPLAUOGM_PEUPLES_TABLE', 'lauPeuples');
+
 ?>

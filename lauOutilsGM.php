@@ -57,13 +57,18 @@ if (WPLAUOGM_DEBUG_MODE) {
 
 // [lauoutilsgm]
 function lauOutilsGM_func($atts) {
-	$dataReferences = new DataReferencesDAO ( 'peuples' );
-	$peuples = $dataReferences->parseXml ( 'peuples' );
-	reset ( $peuples->peuple );
 	
 	$smartyLauogm = new SmartyLauogm ( false );
 	
-	$smartyLauogm->assign ( 'listePeuples', $peuples->peuple );
+	$peuples = new Peuples();
+	$listePeuples = $peuples->getPeupleList();
+	
+// 	echo "<pre>";
+// 	print_r($listePeuples);
+// 	echo "</pre>";
+	
+	
+	$smartyLauogm->assign ( 'listePeuples', $listePeuples );
 	$smartyLauogm->assign ( 'name', 'ThrodoTest' );
 	$smartyLauogm->assign ( 'sequential', 'first' );
 	

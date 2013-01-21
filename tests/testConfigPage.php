@@ -30,8 +30,8 @@ if (! defined ( 'WPLAUOGM_PLUGIN_DAO_CLASS_DIR' ))
 if (! defined ( 'WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR' ))
 	define ( 'WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR', WPLAUOGM_PLUGIN_CLASS_DIR . '/exception' );
 
-if (!defined('WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR'))
-	define('WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR', WPLAUOGM_PLUGIN_CLASS_DIR . '/administration');
+if (! defined ( 'WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR' ))
+	define ( 'WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR', WPLAUOGM_PLUGIN_CLASS_DIR . '/administration' );
 
 if (! defined ( 'WPLAUOGM_PLUGIN_DATA_DIR' ))
 	define ( 'WPLAUOGM_PLUGIN_DATA_DIR', WPLAUOGM_PLUGIN_DIR . '/dataReferences' );
@@ -42,7 +42,7 @@ if (! defined ( 'WPLAUOGM_PLUGIN_TESTDATA_DIR' ))
 if (! defined ( 'WPLAUOGM_DEBUG_MODE' ))
 	define ( 'WPLAUOGM_DEBUG_MODE', true );
 	
-// Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des
+	// Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des
 	// Classes
 spl_autoload_register ( function ($class) {
 	$include = array (
@@ -60,5 +60,8 @@ spl_autoload_register ( function ($class) {
 		}
 	}
 } );
+
+if (! defined ( 'WPLAUOGM_PEUPLES_TABLE' ))
+	define ( 'WPLAUOGM_PEUPLES_TABLE', 'lauPeuples' );
 
 ?>

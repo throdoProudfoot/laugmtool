@@ -48,7 +48,7 @@ class DataReferences {
 	 */
 	function __construct($type) {
 		try {
-			$this->drd = new DataReferencesDAO ( $type );
+			$this->drd = new Peuples ( $type );
 		} catch ( LauDataFileNotFoundException $e ) {
 			throw $e;
 		}
