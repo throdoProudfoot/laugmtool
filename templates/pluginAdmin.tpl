@@ -4,7 +4,7 @@
 
 <p>Vous pouvez réinitialiser les différentes tables utilisées par le plugin <b>L'Anneau Unique Outils pour GM</b></p>
 
-<form method="post" action="">
+<form method="post" action="#">
     <fieldset>
         <legend>Cochez les tables que vous voulez réinitialiser :</legend>
         {foreach from=$listeTables key=k item=table}

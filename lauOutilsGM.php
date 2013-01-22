@@ -34,7 +34,7 @@ spl_autoload_register ( function ($class) {
 			WPLAUOGM_PLUGIN_CLASS_DIR,
 			WPLAUOGM_PLUGIN_DAO_CLASS_DIR,
 			WPLAUOGM_PLUGIN_EXCEPTION_CLASS_DIR,
-			WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR
+			WPLAUOGM_PLUGIN_ADMINISTRATION_CLASS_DIR 
 	);
 	$find = false;
 	foreach ( $include as $key => $value ) {
@@ -57,22 +57,32 @@ if (WPLAUOGM_DEBUG_MODE) {
 
 // [lauoutilsgm]
 function lauOutilsGM_func($atts) {
+	session_start ();
+	$smartyLauogm = new SmartyLauogm ();
 	
-	$smartyLauogm = new SmartyLauogm ( false );
+	$peuples = new Peuples ();
 	
-	$peuples = new Peuples();
-	$listePeuples = $peuples->getPeupleList();
+	if (count ( $_POST ) == 0) {
+		$listePeuples = $peuples->getPeupleList ();
+		$smartyLauogm->assign ( 'listePeuples', $listePeuples );
+		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
+		$smartyLauogm->assign ( 'sequential', 'first' );
+		$display = $smartyLauogm->fetch ( 'choixRace.tpl' );
+	} elseif (isset ( $_POST ['peupleValide'] )) {
+		$pId = $_POST ['peuples'];
+		$pNom = $peuples->getPeupleNom ( $pId );
+		$_SESSION ['idPeuple'] = $pId;
+		$_SESSION ['nomPeuple'] = $pNom;
+		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
+		$smartyLauogm->assign ( 'listeVocations', array (
+				0 => 'Erudit',
+				1 => 'Chasseur de trésors' 
+		) );
+		$smartyLauogm->assign ( 'peuple', $pNom );
+		$display = $smartyLauogm->fetch ( 'file:choixVocation.tpl' );
+	}
 	
-// 	echo "<pre>";
-// 	print_r($listePeuples);
-// 	echo "</pre>";
-	
-	
-	$smartyLauogm->assign ( 'listePeuples', $listePeuples );
-	$smartyLauogm->assign ( 'name', 'ThrodoTest' );
-	$smartyLauogm->assign ( 'sequential', 'first' );
-	
-	return $smartyLauogm->fetch ( 'choixRace.tpl' );
+	return $display;
 }
 
 add_shortcode ( 'lauoutilsgm', 'lauoutilsgm_func' );

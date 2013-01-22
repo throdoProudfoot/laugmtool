@@ -70,6 +70,15 @@ class Peuples {
 		}
 		return ($retArray);
 	}
+
+	/**
+	 * @return NULL
+	 */
+	public function getPeupleNom($pId) {
+		$retArray =$this->getContent();
+		return ($retArray[$pId]->getNomPeuple());
+	}
+	
 }
 
 ?>
