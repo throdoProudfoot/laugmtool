@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE traits SYSTEM "traitsReferences.dtd"> -->
+
+<!-- To change this template, choose Tools | Templates and open the template 
+	in the editor. -->
+
+<vocationsparpeuples childNode="vocationsparpeuple">
+	<vocationsparpeuple>
+		<nomPeuple>Bardide</nomPeuple>
+		<nomVocation>Érudit</nomVocation>
+		<priorite>Primaire</priorite>
+	</vocationsparpeuple>
+	<vocationsparpeuple>
+		<nomPeuple>Bardide</nomPeuple>
+		<nomVocation>Chasseur de trésors</nomVocation>
+		<priorite>Primaire</priorite>
+	</vocationsparpeuple>
+	<vocationsparpeuple>
+		<nomPeuple>Nain du Mont-Solitaire</nomPeuple>
+		<nomVocation>Chasseur de trésors</nomVocation>
+		<priorite>Primaire</priorite>
+	</vocationsparpeuple>
+	<vocationsparpeuple>
+		<nomPeuple>Nain du Mont-Solitaire</nomPeuple>
+		<nomVocation>Tueur</nomVocation>
+		<priorite>Primaire</priorite>
+	</vocationsparpeuple>
+	<vocationsparpeuple>
+		<nomPeuple>Nain du Mont-Solitaire</nomPeuple>
+		<nomVocation>Protecteur</nomVocation>
+		<priorite>Secondaire</priorite>
+	</vocationsparpeuple>
+</vocationsparpeuples>

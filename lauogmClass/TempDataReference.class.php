@@ -39,7 +39,7 @@ class TempDataReference {
 	 */
 	function __construct() {
 		try {
-			$drd = new Peuples ( 'tables' );
+			$drd = new DataReferencesDAO ( 'tables' );
 		} catch ( LauDataFileNotFoundException $e ) {
 			throw $e;
 		}
@@ -95,7 +95,7 @@ class TempDataReference {
 			if (isset ( $post [$key] )) {
 				try {
 					$dataRef = strtolower ( $value ['libelle'] );
-					$drd = new Peuples ( $dataRef );
+					$drd = new DataReferencesDAO ( $dataRef );
 				} catch ( Exception $e ) {
 					throw $e;
 				}

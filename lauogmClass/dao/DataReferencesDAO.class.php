@@ -14,7 +14,7 @@ class DataReferencesDAO {
 	
 	/**
 	 *
-	 * @var string : Le fichier qui contient les données
+	 * @var string : Le nom du fichier qui contient les données
 	 */
 	private $contentFile;
 	
@@ -100,7 +100,6 @@ class DataReferencesDAO {
 			$filename = $dataFileType;
 			$this->root = $root;
 		}
-
 		if (file_exists ( $filename )) {
 			$this->contentFile = $filename;
 		} else {
@@ -119,10 +118,11 @@ class DataReferencesDAO {
 	 */
 	public function getDataReferenceContent() {
 		$dom = new DOMDocument ();
+		$resultArray = array ();
 		try {
 			$returnValue = $dom->load ( $this->getContentFile () );
 		} catch ( Exception $e ) {
-			throw new LauDataFileParsingException ( $this->getFile () );
+			throw new LauDataFileParsingException ( $this->getContentFile () );
 		}
 		$retArray = XML2Array::createArray ( $dom );
 		$step = "Utilisation de XML2Array ok";
@@ -143,25 +143,23 @@ class DataReferencesDAO {
 							if (array_key_exists ( 'nom', $value )) {
 								$resultArray [$value ['nom']] = $value;
 							} else {
-								$resultArray = null;
-								break;
+								array_push ( $resultArray, $value );
 							}
 						} else {
 							if (array_key_exists ( 'nom', $retArray [$this->root] [$this->childNode] )) {
 								$resultArray [$retArray [$this->root] [$this->childNode] ['nom']] = $retArray [$this->root] [$this->childNode];
 							} else {
-								$resultArray = null;
-								break;
+								array_push ( $resultArray, $value );
 							}
 						}
 					}
 				}
 			}
 		} else {
-			throw new LauDataFileStructureException ( $this->getFile () );
+			throw new LauDataFileStructureException ( $this->getContentFile () );
 		}
 		if (gettype ( $resultArray ) != 'array') {
-			throw new LauDataFileStructureException ( $this->getFile (), $step );
+			throw new LauDataFileStructureException ( $this->getContentFile (), $step );
 		}
 		return $resultArray;
 	}
@@ -174,7 +172,11 @@ class DataReferencesDAO {
 	 */
 	public function storeDataReferenceContents($pNomTable, $pStructure, $pContent) {
 		$this->createTable ( $pNomTable, $pStructure );
-		$this->storeData ( $pNomTable, $pStructure, $pContent );
+		if (array_key_exists ( 'tableDeJointure', $pStructure )) {
+			$this->storeAssociationData ( $pNomTable, $pStructure, $pContent );
+		} else {
+			$this->storeData ( $pNomTable, $pStructure, $pContent );
+		}
 		return 0;
 	}
 	
@@ -186,11 +188,11 @@ class DataReferencesDAO {
 	 */
 	private function createTable($pNomTable, $pStructure) {
 		global $wpdb;
+		$tableIndex = "";
 		
 		$table_name = $wpdb->prefix . $pNomTable;
 		
 		$dynDropTable = "DROP TABLE IF EXISTS `" . $table_name . "`;";
-		
 		$e = $wpdb->query ( $dynDropTable );
 		
 		$dynCreateTable = "CREATE TABLE " . $table_name . " (";
@@ -206,6 +208,12 @@ class DataReferencesDAO {
 					default :
 						$dynCreateTable .= " " . $value ['type'] . " " . strtoupper ( $value ['null'] ) . ",";
 						break;
+				}
+				if (array_key_exists ( 'key', $value )) {
+					if ($tableIndex != "") {
+						$tableIndex .= ",";
+					}
+					$tableIndex .= $value ['nom'];
 				}
 			}
 		} else {
@@ -228,12 +236,18 @@ class DataReferencesDAO {
 	
 	/**
 	 *
+	 *
+	 * Fonction qui permet de stocker les informations contenu dans le fichier
+	 * XML dans la base de données.
+	 * Cette fonction doit être utilisée pour des tables normales et non des
+	 * tables d'association.
+	 *
 	 * @param unknown_type $pNomTable        	
 	 * @param unknown_type $pStructure        	
-	 * @param unknown_type $data        	
+	 * @param unknown_type $pData        	
 	 * @return number
 	 */
-	private function storeData($pNomTable, $pStructure, $data) {
+	private function storeData($pNomTable, $pStructure, $pData) {
 		global $wpdb;
 		
 		$table_name = $wpdb->prefix . $pNomTable;
@@ -249,7 +263,7 @@ class DataReferencesDAO {
 			}
 		}
 		
-		foreach ( $data as $key => $value ) {
+		foreach ( $pData as $key => $value ) {
 			$dynInsertTable = "INSERT INTO " . $table_name . " (" . $dynListColonne . ") VALUES(";
 			$ajouteVirgule = false;
 			
@@ -261,6 +275,84 @@ class DataReferencesDAO {
 				$ajouteVirgule = true;
 			}
 			$dynInsertTable .= ');';
+			
+			$e = $wpdb->query ( $dynInsertTable );
+		}
+	}
+	
+	/**
+	 *
+	 *
+	 * Fonction qui permet de stocker les informations contenu dans le fichier
+	 * XML dans la base de données.
+	 * Cette fonction doit être utilisée pour des tables d'association et non
+	 * des tables normales.
+	 *
+	 * @param unknown_type $pNomTable        	
+	 * @param unknown_type $pStructure        	
+	 * @param unknown_type $pData        	
+	 * @return number
+	 */
+	private function storeAssociationData($pNomTable, $pStructure, $pData) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . $pNomTable;
+		
+		$ajouteVirgule = false;
+		foreach ( $pStructure ['colonne'] as $key => $value ) {
+			if ($ajouteVirgule) {
+				$dynListColonne .= ',';
+			}
+			if ($value ['type'] != "indexAuto") {
+				$dynListColonne .= '`' . $value ['nom'] . '`';
+				$ajouteVirgule = true;
+			}
+			
+			if (array_key_exists ( 'jointure', $value )) {
+				$root = $value ['jointure'];
+				$remplaceValeur [$root ['nomChampRecherche']] = array (
+						'aChercher' => $root ['nomChampRecherche'],
+						'aStocker' => $value ['nom'],
+						'table' => $root ['nomTable'] 
+				);
+			}
+		}
+		
+		foreach ( $pData as $key => $value ) {
+			$dynInsertTable = "INSERT INTO " . $table_name . " (" . $dynListColonne . ") VALUES(";
+			$ajouteVirgule = false;
+			
+			foreach ( $value as $k => $v ) {
+				$jointure = false;
+				
+				if ( ! is_null( $remplaceValeur )) {
+					
+					if (array_key_exists ( $k, $remplaceValeur )) {
+						$jointure = true;
+						
+						$valeurATrouver = $remplaceValeur [$k]['aChercher'];
+						$valeurAStocker = $remplaceValeur [$k]['aStocker'];
+						$tableAParcourir = $wpdb->prefix . $remplaceValeur [$k]['table'];
+						
+						$sqlRequest = "SELECT `" . $valeurAStocker . "` FROM `" . $tableAParcourir . "` WHERE `" . $valeurATrouver . "`='" . $v."'";
+
+						$row = $wpdb->get_results ( $sqlRequest );
+						
+						$valeurAAjouter = $row[0]->$valeurAStocker;
+					}
+				} 
+				
+				if ( ! $jointure) {
+					$valeurAAjouter = $v;
+				}
+				
+				if ($ajouteVirgule) {
+					$dynInsertTable .= ',';
+				}
+				$dynInsertTable .= '"' . $valeurAAjouter . '"';
+				$ajouteVirgule = true;
+			}
+			$dynInsertTable .= ');';
+			
 			$e = $wpdb->query ( $dynInsertTable );
 		}
 	}

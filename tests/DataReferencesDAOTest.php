@@ -20,7 +20,7 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		parent::setUp ();
 		
-		$this->DataReferencesDAO = new Peuples ( 'peuples' );
+		$this->DataReferencesDAO = new DataReferencesDAO ( 'peuples' );
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	 * Tests DataReferencesDAO->__construct()
 	 */
 	public function test__constructWithFileExist() {
-		$df = new Peuples ( 'peuples' );
+		$df = new DataReferencesDAO ( 'peuples' );
 		$this->assertNotNull ( $df );
 		$resultArray = $df->getDataReferenceContent();
 		$this->assertNotNull ( $resultArray );
@@ -56,18 +56,18 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	 * /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM/tests/testDataReferences/notExistReferences.xml
 	 */
 	public function test__constructWithFileNotExist() {
-		$df = new Peuples ( 'notExist' );
+		$df = new DataReferencesDAO ( 'notExist' );
 	}
 	
 	/**
 	 * Tests DataReferencesDAO->getDataReferenceContents()
 	 */
 	public function test__constructParsingOk() {
-		$df = new Peuples ( 'tables' );
+		$df = new DataReferencesDAO ( 'tables' );
 		$resultArray = $df->getDataReferenceContent();		
 		$this->assertTrue ( gettype ( $resultArray ) == "array" );
 		$this->assertNotNull ( $resultArray );
-		$this->assertEquals ( 3, count ( $resultArray ) );
+		$this->assertEquals ( 6, count ( $resultArray ) );
 		$this->assertArrayHasKey ( 'lauPeuples', $resultArray );
 		$this->assertArrayHasKey ( 'lauVocations', $resultArray );
 		$this->assertArrayHasKey ( 'lauAvantages', $resultArray );
@@ -80,7 +80,7 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	 * /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM/tests/testDataReferences/badDataReferences.xml
 	 */
 	public function test__constructParsingFailure() {
-		$df = new Peuples ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/badDataReferences.xml', true, 'root' );
+		$df = new DataReferencesDAO ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/badDataReferences.xml', true, 'root' );
 		$resultArray = $df->getDataReferenceContent();
 	}
 
@@ -92,7 +92,7 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	 * /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM/tests/testDataReferences/badStructureFile.xml
 	 */
 	public function test__constructBadStructure() {
-		$df = new Peuples ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/badStructureFile.xml', true, 'peuples' );
+		$df = new DataReferencesDAO ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/badStructureFile.xml', true, 'peuples' );
 		$resultArray = $df->getDataReferenceContent();		
 	}
 	
@@ -104,7 +104,7 @@ class DataReferencesDAOTest extends PHPUnit_Framework_TestCase {
 	 * /media/www-dev/private/wordpress/wp-content/plugins/lauOutilsGM/tests/testDataReferences/childNodeNotFound.xml.xml
 	 */
 	public function test__constructChildNodeNotFound() {
-		$df = new Peuples ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/childNodeNotFound.xml', true, 'peuples' );
+		$df = new DataReferencesDAO ( WPLAUOGM_PLUGIN_TESTDATA_DIR . '/childNodeNotFound.xml', true, 'peuples' );
 		$resultArray = $df->getDataReferenceContent();
 	}
 	

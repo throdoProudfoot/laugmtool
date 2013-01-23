@@ -41,7 +41,10 @@ if (! defined ( 'WPLAUOGM_PLUGIN_TESTDATA_DIR' ))
 
 if (! defined ( 'WPLAUOGM_DEBUG_MODE' ))
 	define ( 'WPLAUOGM_DEBUG_MODE', true );
-	
+
+if (! defined ( 'WPLAUOGM_PEUPLES_TABLE' ))
+	define ( 'WPLAUOGM_PEUPLES_TABLE', 'lauPeuples' );
+
 	// Fonction anonyme à partir de PHP 5.3.0 qui permet l'auto-chargement des
 	// Classes
 spl_autoload_register ( function ($class) {
@@ -60,8 +63,5 @@ spl_autoload_register ( function ($class) {
 		}
 	}
 } );
-
-if (! defined ( 'WPLAUOGM_PEUPLES_TABLE' ))
-	define ( 'WPLAUOGM_PEUPLES_TABLE', 'lauPeuples' );
 
 ?>

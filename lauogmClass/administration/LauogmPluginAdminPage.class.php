@@ -83,7 +83,7 @@ class LauogmPluginAdminPage {
 			// Récupération de la description des Tables.
 			try {
 				$arrayTablesReinitialisees = $this->processFormResult ( $tables, $_POST, $tdf );
-			} catch ( LauDataFileNotFoundException $e ) {
+			} catch ( Exception $e ) {
 				$this->smarty->assign ( 'erreurDetected', true );
 				$this->assignErreur ( $e );
 			}
@@ -120,14 +120,12 @@ class LauogmPluginAdminPage {
 					$dataRef = strtolower ( $value ['libelle'] );
 					$dr = new DataReferences ( $dataRef );
 				} catch ( Exception $e ) {
-					$this->smarty->assign ( 'erreurDetected', true );
-					$this->assignErreur ( $e );
+					throw $e;
 				}
 				try {
 					$structure = $pTableRef->getStructure ( $key );
 				} catch ( Exception $e ) {
-					$this->smarty->assign ( 'erreurDetected', true );
-					$this->assignErreur ( $e );
+					throw $e;
 				}
 				$dr->storeDataRef ( $key, $structure );
 				array_push ( $retArray, $dataRef );

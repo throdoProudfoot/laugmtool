@@ -20,7 +20,7 @@ s-class PeuplesDAOTest extends PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		parent::setUp ();
 		
-		$this->PeuplesDAO = new Peuples();
+		$this->PeuplesDAO = new DataReferencesDAO();
 	}
 	
 	/**

@@ -41,4 +41,10 @@ if (!defined('WPLAUOGM_DEBUG_MODE'))
 if (!defined('WPLAUOGM_PEUPLES_TABLE'))
 	define('WPLAUOGM_PEUPLES_TABLE', 'lauPeuples');
 
+if (!defined('WPLAUOGM_VOCATIONS_TABLE'))
+	define('WPLAUOGM_VOCATIONS_TABLE', 'lauVocations');
+
+if (!defined('WPLAUOGM_PEUPLESPARVOCATIONS_TABLE'))
+	define('WPLAUOGM_PEUPLESPARVOCATIONS_TABLE', 'lauVocationsParPeuples');
+
 ?>

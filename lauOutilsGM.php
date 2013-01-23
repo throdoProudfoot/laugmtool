@@ -60,7 +60,7 @@ function lauOutilsGM_func($atts) {
 	session_start ();
 	$smartyLauogm = new SmartyLauogm ();
 	
-	$peuples = new Peuples ();
+	$peuples = new DataReferencesDAO ();
 	
 	if (count ( $_POST ) == 0) {
 		$listePeuples = $peuples->getPeupleList ();
@@ -73,6 +73,9 @@ function lauOutilsGM_func($atts) {
 		$pNom = $peuples->getPeupleNom ( $pId );
 		$_SESSION ['idPeuple'] = $pId;
 		$_SESSION ['nomPeuple'] = $pNom;
+		
+		$vpp = new PeuplesParVocations();
+		
 		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
 		$smartyLauogm->assign ( 'listeVocations', array (
 				0 => 'Erudit',
