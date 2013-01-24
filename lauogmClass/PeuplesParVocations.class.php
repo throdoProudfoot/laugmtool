@@ -17,47 +17,22 @@
 class PeuplesParVocations {
 	
 	private $pd;
-	private $content;
+	private $peuple;
+	private $vocations;
 	
-	/**
-	 * @return the $pd
-	 */
-	public function getPd() {
-		return $this->pd;
-	}
-
-	/**
-	 * @return the $content
-	 */
-	public function getContent() {
-		return $this->content;
-	}
-
-	/**
-	 * @param PeuplesDAO $pd
-	 */
-	public function setPd($pd) {
-		$this->pd = $pd;
-	}
-
-	/**
-	 * @param Peuple $content
-	 */
-	public function setContent($content) {
-		$this->content = $content;
-	}
 
 	/**
 	 */
-	function __construct() {
-		$this->pd = new PeuplesParVocationsDAO();
-		foreach ($this->pd->getData() as $key => $value) {
+	function __construct($pIdPeuple) {
+		$this->pd = new PeuplesParVocationsDAO($pIdPeuple);
+		foreach ($this->pd->getData() as $key => $value) {		
 			if (gettype($value) == 'object') {
-				$this->content[$value->idPeuple] = new Vocation($value->idPeuple, $value->idVocation, $value->priorite);
+				$this->peuple[$value->idPeuple]=$value->nomPeuple;
+				$this->vocations[$value->idVocation] = new VocationParPeuple($value->idPeuple, $value->idVocation, $value->nomPeuple, $value->nomVocation, $value->priorite);
 			} else {
 				echo "Erreur";
 			}
-		}		
+		}
 	}
 	
 	/**
@@ -65,6 +40,12 @@ class PeuplesParVocations {
 	 */
 	public function getPeuplesParVocationsList() {
 		$retArray = array();
+		echo "Content : <pre>";
+		print_r ($this);
+		echo "</pre>";
+		foreach ($this->vocations as $key => $value) {
+			$retArray[$key] = $value->getNomVocation();
+		}		
 		return ($retArray);
 	}
 	

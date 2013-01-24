@@ -59,9 +59,9 @@ if (WPLAUOGM_DEBUG_MODE) {
 function lauOutilsGM_func($atts) {
 	session_start ();
 	$smartyLauogm = new SmartyLauogm ();
-	
-	$peuples = new DataReferencesDAO ();
-	
+		
+	$peuples = new Peuples();
+
 	if (count ( $_POST ) == 0) {
 		$listePeuples = $peuples->getPeupleList ();
 		$smartyLauogm->assign ( 'listePeuples', $listePeuples );
@@ -74,13 +74,11 @@ function lauOutilsGM_func($atts) {
 		$_SESSION ['idPeuple'] = $pId;
 		$_SESSION ['nomPeuple'] = $pNom;
 		
-		$vpp = new PeuplesParVocations();
+		$vpp = new PeuplesParVocations($pId);
+		$listeVocations = $vpp->getPeuplesParVocationsList();
 		
 		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
-		$smartyLauogm->assign ( 'listeVocations', array (
-				0 => 'Erudit',
-				1 => 'Chasseur de trésors' 
-		) );
+		$smartyLauogm->assign ( 'listeVocations', $listeVocations );
 		$smartyLauogm->assign ( 'peuple', $pNom );
 		$display = $smartyLauogm->fetch ( 'file:choixVocation.tpl' );
 	}

@@ -68,7 +68,7 @@ class PeuplesDAO {
 		global $wpdb;
 		
 		$returnArray = array ();
-		$sqlRequest = "SELECT `idPeuple`, `nomPeuple`, `descriptionCourtePeuple`, `introductionPeuple`, `descriptionLonguePeuple`, `vocationPrimaire1Peuple`, `vocationPrimaire2Peuple`, `vocationSecondairePeuple`, `niveauDeViePeuple`, `avantageCulturelPeuple` FROM `" . $this->getTableName () . "`";
+		$sqlRequest = "SELECT `idPeuple`, `nomPeuple`, `descriptionCourtePeuple`, `introductionPeuple`, `descriptionLonguePeuple`, `niveauDeViePeuple`, `avantageCulturelPeuple` FROM `" . $this->getTableName () . "`";
 		
 		$returnArray = $wpdb->get_results ( $sqlRequest );
 		
