@@ -40,9 +40,6 @@ class PeuplesParVocations {
 	 */
 	public function getPeuplesParVocationsList() {
 		$retArray = array();
-		echo "Content : <pre>";
-		print_r ($this);
-		echo "</pre>";
 		foreach ($this->vocations as $key => $value) {
 			$retArray[$key] = $value->getNomVocation();
 		}		

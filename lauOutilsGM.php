@@ -57,36 +57,78 @@ if (WPLAUOGM_DEBUG_MODE) {
 
 // [lauoutilsgm]
 function lauOutilsGM_func($atts) {
-	session_start ();
-	$smartyLauogm = new SmartyLauogm ();
-		
-	$peuples = new Peuples();
-
 	if (count ( $_POST ) == 0) {
+		if (array_key_exists ( 'etape', $_SESSION )) {
+			unset ( $_SESSION ['etape'] );
+			unset ( $_SESSION ['idPeuple'] );
+			unset ( $_SESSION ['nomPeuple'] );
+		}
+	}
+	
+	$smartyLauogm = new SmartyLauogm ();
+	
+	$peuples = new Peuples ();
+	
+	if (! isset ( $_SESSION ['etape'] )) {
 		$listePeuples = $peuples->getPeupleList ();
 		$smartyLauogm->assign ( 'listePeuples', $listePeuples );
 		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
 		$smartyLauogm->assign ( 'sequential', 'first' );
 		$display = $smartyLauogm->fetch ( 'choixRace.tpl' );
-	} elseif (isset ( $_POST ['peupleValide'] )) {
-		$pId = $_POST ['peuples'];
-		$pNom = $peuples->getPeupleNom ( $pId );
-		$_SESSION ['idPeuple'] = $pId;
-		$_SESSION ['nomPeuple'] = $pNom;
+		$_SESSION ['etape'] = 'vocations';
+	} elseif ($_SESSION ['etape'] == 'vocations') {
+		$pIdPeuple = $_POST ['peuples'];
+		$pNomPeuple = $peuples->getPeupleNom ( $pIdPeuple );
+		$_SESSION ['idPeuple'] = $pIdPeuple;
+		$_SESSION ['nomPeuple'] = $pNomPeuple;
 		
-		$vpp = new PeuplesParVocations($pId);
-		$listeVocations = $vpp->getPeuplesParVocationsList();
+		$vpp = new PeuplesParVocations ( $pIdPeuple );
+		$listeVocations = $vpp->getPeuplesParVocationsList ();
 		
 		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
 		$smartyLauogm->assign ( 'listeVocations', $listeVocations );
-		$smartyLauogm->assign ( 'peuple', $pNom );
+		$smartyLauogm->assign ( 'peuple', $pNomPeuple );
 		$display = $smartyLauogm->fetch ( 'file:choixVocation.tpl' );
+		$_SESSION ['etape'] = 'choixListeArmes';
+	} elseif ($_SESSION ['etape'] == 'choixListeArmes') {
+		$pIdVocation = $_POST ['vocations'];
+		$pNomPeuple = $_SESSION ['nomPeuple'];
+		$vocations = new Vocations ();
+		$pNomVocation = $vocations->getVocationNom ( $pIdVocation );
+		$_SESSION ['idVocation'] = $pIdVocation;
+		$_SESSION ['nomVocation'] = $pNomVocation;
+		
+		// $vpp = new PeuplesParVocations ( $pId );
+		// $listeVocations = $vpp->getPeuplesParVocationsList ();
+		
+		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
+		$smartyLauogm->assign ( 'listesArmes', array (
+				0 => 'Arc',
+				1 => 'Lance' 
+		) );
+		$smartyLauogm->assign ( 'peuple', $pNomPeuple );
+		$smartyLauogm->assign ( 'vocation', $pNomVocation );
+		$display = $smartyLauogm->fetch ( 'file:choixListeArmes.tpl' );
+		$_SESSION ['etape'] = 'choixSpecialites';
 	}
 	
 	return $display;
 }
 
 add_shortcode ( 'lauoutilsgm', 'lauoutilsgm_func' );
+
+add_action ( 'init', 'myStartSession', 1 );
+function myStartSession() {
+	if (! session_id ()) {
+		session_start ();
+	}
+}
+
+add_action ( 'wp_logout', 'myEndSession' );
+add_action ( 'wp_login', 'myEndSession' );
+function myEndSession() {
+	session_destroy ();
+}
 
 $pluginAdminPage = new LauogmPluginAdminPage ();
 ?>
