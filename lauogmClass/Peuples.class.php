@@ -53,11 +53,11 @@ class Peuples {
 		$this->pd = new PeuplesDAO();
 		foreach ($this->pd->getData() as $key => $value) {
 			if (gettype($value) == 'object') {
-				$this->content[$value->idPeuple] = new Peuple($value->idPeuple, $value->nomPeuple, $value->descriptionCourtePeuple, $value->introductionPeuple, $value->descriptionLonguePeuple, $value->niveauDeViePeuple, $value->avantageCulturelPeuple);
+				$this->content[$value->idPeuple] = new Peuple($value->idPeuple, $value->nomPeuple, $value->indexPeuple, $value->descriptionCourtePeuple, $value->introductionPeuple, $value->descriptionLonguePeuple, $value->niveauDeViePeuple, $value->avantageCulturelPeuple);
 			} else {
 				echo "Erreur";
 			}
-		}		
+		}
 	}
 	
 	/**
@@ -66,7 +66,8 @@ class Peuples {
 	public function getPeupleList() {
 		$retArray = array();
 		foreach ($this->getContent() as $key => $value) {
-			$retArray[$key] = $value->getNomPeuple();
+			//$retArray[$key] = $value->getNomPeuple();
+			$retArray[$key] = $value->getPeupleToArray();
 		}
 		return ($retArray);
 	}

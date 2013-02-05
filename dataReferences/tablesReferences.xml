@@ -128,6 +128,11 @@
 				<null>not null</null>
 			</colonne>
 			<colonne>
+				<nom>indexPeuple</nom>
+				<type>varchar(30)</type>
+				<null>not null</null>
+			</colonne>			
+			<colonne>
 				<nom>descriptionCourtePeuple</nom>
 				<type>tinytext</type>
 				<null>not null</null>

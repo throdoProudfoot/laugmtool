@@ -10,46 +10,33 @@
 
 
     <p class="lauFormTitle"><b><u>Choisir son peuple parmi ceux disponibles :</u></b></p>
-    <form method="post" action="#">
-	    <fieldset>
-	    	<label for="peuple">Peuple</label>
-		    <select name="peuples">
-		    {foreach from=$listePeuples key=k item=peuple}
-		        <option value={$k}>{$peuple}</option>
-		    {foreachelse}
-		        <p class="lauError">Il y a sans doute une erreur, aucun résultat retourné par la recherche.</p>        
-		    {/foreach}
-		    </select>
-		    <input type="submit" class="button" name="peupleValide" value="Valider" />
-	    <fieldset>
-	</form> 
-	
+    <form id="selectionnePeuple" method="post" action="#">
+    <input type="hidden" id="peupleSelected" name="peuples">
+    	
 	<div id="ca-container" class="ca-container">
     <div class="ca-wrapper">
         {foreach from=$listePeuples key=k item=peuple}
     
-        <div class="ca-item ca-item-{$k}">
+        <div class="ca-item ca-item-{$peuple['IndexPeuple']}">
             <div class="ca-item-main">
                 <div class="ca-icon"></div>
-                <h3>{$peuple}</h3>
+                <h3 key="{$peuple['IdPeuple']}">{$peuple['NomPeuple']}</h3>
                 <h4>
                     <span class="ca-quote">“</span>
-                    <span>Some text...</span>
+                    <span>{$peuple['DescriptionCourtePeuple']}</span>
                 </h4>
-                    <a href="#" class="ca-more">more...</a>
+                    <a href="#" class="ca-more">plus...</a>
             </div>
             <div class="ca-content-wrapper">
                 <div class="ca-content">
                     <h6>Super Peuple qui roxxe</h6>
                     <a href="#" class="ca-close">close</a>
                     <div class="ca-content-text">
-                        <p>Some more text...</p>
+                        <p>{$peuple['DescriptionLonguePeuple']}</p>
                     </div>
                     <ul>
-                        <li><a href="#">Read more</a></li>
-                        <li><a href="#">Share this</a></li>
-                        <li><a href="#">Become a member</a></li>
-                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Encore plus</a></li>
+                        <li><a href="#">Choisir</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,3 +46,4 @@
 		{/foreach}
     </div><!-- ca-wrapper -->
 </div><!-- ca-container -->
+		    </form>

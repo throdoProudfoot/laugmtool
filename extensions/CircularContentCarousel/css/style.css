@@ -63,7 +63,7 @@
 }
 .ca-icon{
 	width:233px;
-	height:189px;
+	height:210px;
 	position:relative;
 	margin:0 auto;
 	background:transparent url(../images/animal1.png) no-repeat center center;
@@ -89,10 +89,35 @@
 .ca-item-8 .ca-icon{
 	background-image:url(../images/animal8.png);
 }
+
+.ca-item-Bardide .ca-icon{
+	background-image:url(../images/peupleBardide.png);
+}
+
+.ca-item-Nain .ca-icon{
+	background-image:url(../images/peupleNain.png);
+}
+
+.ca-item-HommeSauvage .ca-icon{
+	background-image:url(../images/peupleHommeSauvage.png);
+}
+
+.ca-item-Beornide .ca-icon{
+	background-image:url(../images/peupleBeornide.png);
+}
+
+.ca-item-ElfeSylvain .ca-icon{
+	background-image:url(../images/peupleElfeSylvain.png);
+}
+
+.ca-item-Hobbit .ca-icon{
+	background-image:url(../images/peupleHobbit.png);
+}
+
 .ca-item h3{
 	font-family: 'Coustard', sans-serif;
 	text-transform:uppercase;
-	font-size:30px;
+	font-size:20px;
 	color:#000;
 	margin-bottom:20px;
 	height:85px;
@@ -163,7 +188,7 @@
 }
 .ca-content ul li{
 	float:left;
-	margin:0px 2px;
+	margin:0px 22px;
 }
 .ca-content ul li a{
 	color:#fff;

@@ -8,6 +8,7 @@
 class Peuple {
 	private $idPeuple;
 	private $nomPeuple;
+	private $indexPeuple;
 	private $descriptionCourtePeuple;
 	private $introductionPeuple;
 	private $descriptionLonguePeuple;
@@ -28,6 +29,14 @@ class Peuple {
 	 */
 	public function getNomPeuple() {
 		return $this->nomPeuple;
+	}
+	
+	/**
+	 *
+	 * @return the $indexPeuple
+	 */
+	public function getIndexPeuple() {
+		return $this->indexPeuple;
 	}
 	
 	/**
@@ -88,6 +97,14 @@ class Peuple {
 	
 	/**
 	 *
+	 * @param field_type $indexPeuple        	
+	 */
+	public function setIndexPeuple($indexPeuple) {
+		$this->indexPeuple = $indexPeuple;
+	}
+	
+	/**
+	 *
 	 * @param field_type $descriptionCourtePeuple        	
 	 */
 	public function setDescriptionCourtePeuple($descriptionCourtePeuple) {
@@ -128,14 +145,29 @@ class Peuple {
 	
 	/**
 	 */
-	function __construct($pIdPeuple, $pNomPeuple, $pDescriptionCourtePeuple, $pIntroductionPeuple, $pDescriptionLonguePeuple, $pNiveauDeViePeuple, $pAvantageCulturelPeuple) {
+	function __construct($pIdPeuple, $pNomPeuple, $pIndexPeuple, $pDescriptionCourtePeuple, $pIntroductionPeuple, $pDescriptionLonguePeuple, $pNiveauDeViePeuple, $pAvantageCulturelPeuple) {
 		$this->idPeuple = $pIdPeuple;
 		$this->nomPeuple = $pNomPeuple;
+		$this->indexPeuple = $pIndexPeuple;
 		$this->descriptionCourtePeuple = $pDescriptionCourtePeuple;
 		$this->introductionPeuple = $pIntroductionPeuple;
-		$this->descriptionLonguePeuple = $pDescriptionLonguePeuple;		
+		$this->descriptionLonguePeuple = $pDescriptionLonguePeuple;
 		$this->niveauDeViePeuple = $pNiveauDeViePeuple;
-		$this->avantageCulturelPeuple = $pAvantageCulturelPeuple;		
+		$this->avantageCulturelPeuple = $pAvantageCulturelPeuple;
+	}
+	public function getPeupleToArray() {
+		$peupleArray = array ();
+		
+		$peupleArray ['IdPeuple'] = $this->idPeuple;
+		$peupleArray ['NomPeuple'] = $this->nomPeuple;
+		$peupleArray ['IndexPeuple'] = $this->indexPeuple;
+		$peupleArray ['DescriptionCourtePeuple'] = $this->descriptionCourtePeuple;
+		$peupleArray ['IntroductionPeuple'] = $this->introductionPeuple;
+		$peupleArray ['DescriptionLonguePeuple'] = $this->descriptionLonguePeuple;
+		$peupleArray ['NiveauDeViePeuple'] = $this->niveauDeViePeuple;
+		$peupleArray ['AvantageCulturelPeuple'] = $this->avantageCulturelPeuple;
+		
+		return $peupleArray;
 	}
 }
 

@@ -7,6 +7,7 @@
 <peuples childNode="peuple">
 	<peuple>
 		<nom>Bardide</nom>
+		<index>Bardide</index>
 		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
@@ -24,7 +25,8 @@
 	</peuple>
 	<peuple>
 		<nom>Homme sauvage des bois</nom>
-		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<index>HommeSauvage</index>
+		<descriptionCourte>Humain de Rosghobel </descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
 			trône dans les anciennes salles.
@@ -41,7 +43,9 @@
 	</peuple>
 	<peuple>
 		<nom>Béornide</nom>
-		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<index>Beornide</index>
+		<descriptionCourte>Peuple de Béorn le changeur de forme
+		</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
 			trône dans les anciennes salles.
@@ -58,7 +62,9 @@
 	</peuple>
 	<peuple>
 		<nom>Elfe sylvains de sombre-Bois</nom>
-		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<index>ElfeSylvain</index>
+		<descriptionCourte>Elfes sylvains du peuple de Thranduil
+		</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
 			trône dans les anciennes salles.
@@ -75,7 +81,8 @@
 	</peuple>
 	<peuple>
 		<nom>Hobbit de la Comté</nom>
-		<descriptionCourte>Humain citadin de Dale</descriptionCourte>
+		<index>Hobbit</index>
+		<descriptionCourte>Petite-gens de la Comté</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,
 			avec le temps, beaucoup d'autres Nains s'assemblèrent autour de son
 			trône dans les anciennes salles.
@@ -92,6 +99,7 @@
 	</peuple>
 	<peuple>
 		<nom>Nain du Mont-Solitaire</nom>
+		<index>Nain</index>
 		<descriptionCourte>Nain d'Erebor, peuple de Thorin Ecudechêne
 		</descriptionCourte>
 		<introduction>Là s'établit Dáin, qui devint Roi sous la Montagne, et,

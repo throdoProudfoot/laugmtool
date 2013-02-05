@@ -58,11 +58,6 @@ if (WPLAUOGM_DEBUG_MODE) {
 // [lauoutilsgm]
 function lauOutilsGM_func($atts) {
 	global $wp_styles;
-// 	echo "<pre>";
-// 	print_r( $wp_styles );
-// 	echo "</pre>";	
-	echo '<hr>' . plugins_url('extensions/CircularContentCarousel/css/demo.css', __FILE__);
-	echo '<hr>' .plugin_dir_url('extensions/CircularContentCarousel/css/demo.css', __FILE__);
 	if (count ( $_POST ) == 0) {
 		if (array_key_exists ( 'etape', $_SESSION )) {
 			unset ( $_SESSION ['etape'] );
@@ -74,7 +69,7 @@ function lauOutilsGM_func($atts) {
 	$smartyLauogm = new SmartyLauogm ();
 	
 	$peuples = new Peuples ();
-	
+
 	if (! isset ( $_SESSION ['etape'] )) {
 		$listePeuples = $peuples->getPeupleList ();
 		$smartyLauogm->assign ( 'listePeuples', $listePeuples );
@@ -84,6 +79,7 @@ function lauOutilsGM_func($atts) {
 		$_SESSION ['etape'] = 'vocations';
 	} elseif ($_SESSION ['etape'] == 'vocations') {
 		$pIdPeuple = $_POST ['peuples'];
+		echo "---> $pIdPeuple";
 		$pNomPeuple = $peuples->getPeupleNom ( $pIdPeuple );
 		$_SESSION ['idPeuple'] = $pIdPeuple;
 		$_SESSION ['nomPeuple'] = $pNomPeuple;
