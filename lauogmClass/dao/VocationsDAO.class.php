@@ -68,7 +68,7 @@ class VocationsDAO {
 		global $wpdb;
 		
 		$returnArray = array ();
-		$sqlRequest = "SELECT  `idVocation`, `nomVocation`, `descriptionVocation` FROM `" . $this->getTableName () . "`";
+		$sqlRequest = "SELECT  `idVocation`, `nomVocation`, `indexVocation`, `descriptionCourteVocation`, `descriptionLongueVocation` FROM `" . $this->getTableName () . "`";
 		
 		$returnArray = $wpdb->get_results ( $sqlRequest );
 		

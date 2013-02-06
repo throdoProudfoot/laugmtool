@@ -20,15 +20,21 @@ class VocationParPeuple {
 	private $idVocation;
 	private $nomPeuple;
 	private $nomVocation;
+	private $indexVocation;
+	private $descriptionCourteVocation;
+	private $descriptionLongueVocation;
 	private $priorite;
 	
 	/**
 	 */
-	function __construct($pIdPeuple, $pIdVocation, $pNomPeuple, $pNomVocation, $pPriorite) {
+	function __construct($pIdPeuple, $pIdVocation, $pNomPeuple, $pNomVocation, $pIndexVocation, $pDescriptionCourteVocation, $pDescriptionLongueVocation, $pPriorite) {
 		$this->idPeuple=$pIdPeuple;
 		$this->idVocation=$pIdVocation;
 		$this->nomPeuple=$pNomPeuple;
 		$this->nomVocation=$pNomVocation;
+		$this->indexVocation=$pIndexVocation;
+		$this->descriptionCourteVocation=$pDescriptionCourteVocation;
+		$this->descriptionLongueVocation=$pDescriptionLongueVocation;		
 		$this->priorite=$pPriorite;		
 	}
 	/**
@@ -57,6 +63,27 @@ class VocationParPeuple {
 	 */
 	public function getNomVocation() {
 		return $this->nomVocation;
+	}
+
+	/**
+	 * @return the $indexVocation
+	 */
+	public function getIndexVocation() {
+		return $this->indexVocation;
+	}
+
+	/**
+	 * @return the $descriptionCourteVocation
+	 */
+	public function getDescriptionCourteVocation() {
+		return $this->descriptionCourteVocation;
+	}
+
+	/**
+	 * @return the $descriptionLongueVocation
+	 */
+	public function getDescriptionLongueVocation() {
+		return $this->descriptionLongueVocation;
 	}
 
 	/**
@@ -95,12 +122,49 @@ class VocationParPeuple {
 	}
 
 	/**
+	 * @param field_type $indexVocation
+	 */
+	public function setIndexVocation($indexVocation) {
+		$this->indexVocation = $indexVocation;
+	}
+
+	/**
+	 * @param field_type $descriptionCourteVocation
+	 */
+	public function setDescriptionCourteVocation($descriptionCourteVocation) {
+		$this->descriptionCourteVocation = $descriptionCourteVocation;
+	}
+
+	/**
+	 * @param field_type $descriptionLongueVocation
+	 */
+	public function setDescriptionLongueVocation($descriptionLongueVocation) {
+		$this->descriptionLongueVocation = $descriptionLongueVocation;
+	}
+
+	/**
 	 * @param field_type $priorite
 	 */
 	public function setPriorite($priorite) {
 		$this->priorite = $priorite;
 	}
 
+
+	public function getVocationToArray() {
+		$vocationArray = array ();
+	
+		$vocationArray ['IdPeuple'] = $this->idPeuple;
+		$vocationArray ['IdVocation'] = $this->idVocation;
+		$vocationArray ['NomPeuple'] = $this->nomPeuple;
+		$vocationArray ['NomVocation'] = $this->nomVocation;
+		$vocationArray ['IndexVocation'] = $this->indexVocation;
+		$vocationArray ['DescriptionCourteVocation'] = $this->descriptionCourteVocation;
+		$vocationArray ['DescriptionLongueVocation'] = $this->descriptionLongueVocation;
+		$vocationArray ['Priorite'] = $this->priorite;
+	
+		return $vocationArray;
+	}
+		
 	
 }
 

@@ -28,7 +28,7 @@ class PeuplesParVocations {
 		foreach ($this->pd->getData() as $key => $value) {		
 			if (gettype($value) == 'object') {
 				$this->peuple[$value->idPeuple]=$value->nomPeuple;
-				$this->vocations[$value->idVocation] = new VocationParPeuple($value->idPeuple, $value->idVocation, $value->nomPeuple, $value->nomVocation, $value->priorite);
+				$this->vocations[$value->idVocation] = new VocationParPeuple($value->idPeuple, $value->idVocation, $value->nomPeuple, $value->nomVocation, $value->indexVocation, $value->descriptionCourteVocation, $value->descriptionLongueVocation, $value->priorite);
 			} else {
 				echo "Erreur";
 			}
@@ -40,9 +40,11 @@ class PeuplesParVocations {
 	 */
 	public function getPeuplesParVocationsList() {
 		$retArray = array();
+	
 		foreach ($this->vocations as $key => $value) {
-			$retArray[$key] = $value->getNomVocation();
-		}		
+			$retArray[$key] = $value->getVocationToArray();
+		}
+
 		return ($retArray);
 	}
 	

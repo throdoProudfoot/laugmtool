@@ -26,4 +26,9 @@ jQuery(document).ready(function($) {
 		$('#selectionnePeuple').submit();
 	});
 
+	$('.ca-item-main > h3').click(function() {
+		$('#vocationSelected').val($(this).attr("key"));
+		$('#selectionneVocation').submit();
+	});
+
 });

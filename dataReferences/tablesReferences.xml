@@ -25,10 +25,20 @@
 				<null>not null</null>
 			</colonne>
 			<colonne>
-				<nom>descriptionVocation</nom>
+				<nom>indexVocation</nom>
+				<type>varchar(30)</type>
+				<null>not null</null>
+			</colonne>
+			<colonne>			
+				<nom>descriptionCourteVocation</nom>
 				<type>tinytext</type>
 				<null>not null</null>
 			</colonne>
+			<colonne>			
+				<nom>descriptionLongueVocation</nom>
+				<type>tinytext</type>
+				<null>not null</null>
+			</colonne>			
 		</structure>
 	</table>
 	<table>

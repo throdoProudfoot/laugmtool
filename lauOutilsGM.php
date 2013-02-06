@@ -79,12 +79,14 @@ function lauOutilsGM_func($atts) {
 		$_SESSION ['etape'] = 'vocations';
 	} elseif ($_SESSION ['etape'] == 'vocations') {
 		$pIdPeuple = $_POST ['peuples'];
-		echo "---> $pIdPeuple";
 		$pNomPeuple = $peuples->getPeupleNom ( $pIdPeuple );
 		$_SESSION ['idPeuple'] = $pIdPeuple;
 		$_SESSION ['nomPeuple'] = $pNomPeuple;
 		
 		$vpp = new PeuplesParVocations ( $pIdPeuple );
+// 		echo "<pre>";
+// 		print_r ($vpp);
+// 		echo "</pre>";
 		$listeVocations = $vpp->getPeuplesParVocationsList ();
 		
 		$smartyLauogm->assign ( 'name', 'ThrodoTest' );
@@ -177,9 +179,9 @@ function lauAddJS() {
 	
 	wp_enqueue_script( 'jquery-ui-core', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js', array( 'jquery' ), '1.9', true);
 	
-	wp_enqueue_script( 'test-jquery', plugins_url( 'testJquery.js', __FILE__ ), array( 'jquery','jquery-ui-core' ), '0.1', true);
+	wp_enqueue_script( 'test-jquery', plugins_url( 'extensions/CircularContentCarousel/js/laugmtoolJquery.js', __FILE__ ), array( 'jquery','jquery-ui-core' ), '0.1', true);
 
-	wp_enqueue_script( 'jquery-easing', plugins_url( 'extensions/CircularContentCarousel/js/jquery.easing.1.3.js', __FILE__ ), array( 'jquery','jquery-ui-core' ), '0.1', true);
+	wp_enqueue_script( 'jquery-easing', plugins_url( 'extensions/CircularContentCarousel/js/jquery.easing.1.3.js', __FILE__ ), array( 'jquery','jquery-ui-core' ), '1.3', true);
 	wp_enqueue_script( 'jquery-mousewheel', plugins_url( 'extensions/CircularContentCarousel/js/jquery.mousewheel.js', __FILE__ ), array( 'jquery','jquery-ui-core' ), '0.1', true);
 	wp_enqueue_script( 'jquery-carousel', plugins_url( 'extensions/CircularContentCarousel/js/jquery.contentcarousel.js', __FILE__ ), array( 'jquery','jquery-ui-core' ), '0.1', true);
 	

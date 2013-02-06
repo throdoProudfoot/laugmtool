@@ -155,6 +155,10 @@ class Peuple {
 		$this->niveauDeViePeuple = $pNiveauDeViePeuple;
 		$this->avantageCulturelPeuple = $pAvantageCulturelPeuple;
 	}
+	
+	/**
+	 * @return multitype:Ambigous <field_type, unknown> Ambigous <unknown, field_type> 
+	 */
 	public function getPeupleToArray() {
 		$peupleArray = array ();
 		

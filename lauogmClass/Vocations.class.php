@@ -53,7 +53,7 @@ class Vocations {
 		$this->pd = new VocationsDAO();
 		foreach ($this->pd->getData() as $key => $value) {
 			if (gettype($value) == 'object') {
-				$this->content[$value->idVocation] = new Vocation($value->idVocation, $value->nomVocation, $value->descriptionVocation);
+				$this->content[$value->idVocation] = new Vocation($value->idVocation, $value->nomVocation, $value->indexVocation, $value->descriptionCourteVocation, $value->descriptionLongueVocation);
 			} else {
 				echo "Erreur";
 			}

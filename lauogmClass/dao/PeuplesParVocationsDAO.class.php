@@ -68,7 +68,7 @@ class PeuplesParVocationsDAO {
 		global $wpdb;
 		
 		$returnArray = array ();
-		$sqlRequest = "SELECT  VPP.`idPeuple`, VPP.`idVocation`, P.`nomPeuple`, V.`nomVocation`, VPP.`priorite` FROM `wpcm_lauVocationsParPeuples` AS VPP, `wpcm_lauVocations` AS V, `wpcm_lauPeuples` AS P WHERE VPP.idPeuple = P.idPeuple AND VPP.idVocation = V.idVocation AND P.idPeuple=".$pIdPeuple;
+		$sqlRequest = "SELECT  VPP.`idPeuple`, VPP.`idVocation`, P.`nomPeuple`, V.`nomVocation`,V.`indexVocation`, V.`descriptionCourteVocation`, V.`descriptionLongueVocation`, VPP.`priorite` FROM `wpcm_lauVocationsParPeuples` AS VPP, `wpcm_lauVocations` AS V, `wpcm_lauPeuples` AS P WHERE VPP.idPeuple = P.idPeuple AND VPP.idVocation = V.idVocation AND P.idPeuple=".$pIdPeuple;
 		$returnArray = $wpdb->get_results ( $sqlRequest );
 		
 		return $returnArray;

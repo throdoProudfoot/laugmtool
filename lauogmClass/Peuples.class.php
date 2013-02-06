@@ -66,7 +66,6 @@ class Peuples {
 	public function getPeupleList() {
 		$retArray = array();
 		foreach ($this->getContent() as $key => $value) {
-			//$retArray[$key] = $value->getNomPeuple();
 			$retArray[$key] = $value->getPeupleToArray();
 		}
 		return ($retArray);
