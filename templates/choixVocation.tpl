@@ -16,12 +16,14 @@
     
         <div class="ca-item ca-item-{$vocation['IndexVocation']}">
             <div class="ca-item-main">
-                <div class="ca-icon"></div>
-                <h3 key="{$vocation['IdVocation']}">{$vocation['NomVocation']}</h3>
-                <h4>
-                    <span class="ca-quote">“</span>
-                    <span>{$vocation['DescriptionCourteVocation']}</span>
-                </h4>
+            	<div id="ca-item-key-{$vocation['IdVocation']}" class="ca-item-clickable">
+	                <div class="ca-icon"></div>
+	                <h3 key="{$vocation['IdVocation']}">{$vocation['NomVocation']}</h3>
+	                <h4>
+	                    <span class="ca-quote">“</span>
+	                    <span>{$vocation['DescriptionCourteVocation']}</span>
+	                </h4>
+	            </div>
                 <a href="#" class="ca-more">plus...</a>
             </div>
          <div class="ca-content-wrapper">
@@ -43,4 +45,6 @@
 		{/foreach}
     </div><!-- ca-wrapper -->
 </div><!-- ca-container -->
-		    </form>
+	<input type="submit" id="precedentBouton" value="< Précédent"><input type="submit" id="suivantButton" value="Suivant >">
+	</form>
+ 

@@ -8,10 +8,9 @@
 
 <p>It is run on <b>{$smarty.server.SERVER_NAME}</b> server.</p>
 
-
-    <p class="lauFormTitle"><b><u>Choisir son peuple parmi ceux disponibles :</u></b></p>
-    <form id="selectionnePeuple" method="post" action="#">
-    <input type="hidden" id="peupleSelected" name="peuples">
+<p class="lauFormTitle"><b><u>Choisir son peuple parmi ceux disponibles :</u></b></p>
+	<form id="selectionnePeuple" method="post" action="#">
+	<input type="hidden" id="peupleSelected" name="peuples">
     	
 	<div id="ca-container" class="ca-container">
     <div class="ca-wrapper">
@@ -19,12 +18,14 @@
     
         <div class="ca-item ca-item-{$peuple['IndexPeuple']}">
             <div class="ca-item-main">
-                <div class="ca-icon"></div>
-                <h3 key="{$peuple['IdPeuple']}">{$peuple['NomPeuple']}</h3>
-                <h4>
-                    <span class="ca-quote">“</span>
-                    <span>{$peuple['DescriptionCourtePeuple']}</span>
-                </h4>
+				<div id="ca-item-key-{$peuple['IdPeuple']}" class="ca-item-clickable">
+	                <div class="ca-icon"></div>
+	                <h3 key="{$peuple['IdPeuple']}">{$peuple['NomPeuple']}</h3>
+	                <h4>
+	                    <span class="ca-quote">“</span>
+	                    <span>{$peuple['DescriptionCourtePeuple']}</span>
+	                </h4>
+				</div>
                     <a href="#" class="ca-more">plus...</a>
             </div>
             <div class="ca-content-wrapper">
@@ -46,4 +47,6 @@
 		{/foreach}
     </div><!-- ca-wrapper -->
 </div><!-- ca-container -->
-		    </form>
+<input type="submit" id="suivantBouton" value="Suivant >">
+</form>
+ 

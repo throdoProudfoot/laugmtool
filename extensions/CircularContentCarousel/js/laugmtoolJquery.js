@@ -4,10 +4,6 @@
 
 jQuery(document).ready(function($) {
 
-	$("p").click(function() {
-		$(this).hide();
-	});
-
 	$('#ca-container').contentcarousel({
 		// speed for the sliding animation
 		sliderSpeed : 500,
@@ -21,14 +17,14 @@ jQuery(document).ready(function($) {
 		scroll : 1
 	});
 
-	$('.ca-item-main > h3').click(function() {
-		$('#peupleSelected').val($(this).attr("key"));
-		$('#selectionnePeuple').submit();
-	});
-
-	$('.ca-item-main > h3').click(function() {
-		$('#vocationSelected').val($(this).attr("key"));
-		$('#selectionneVocation').submit();
+	$('.ca-item-clickable').click(function() {
+		var currentId = $(this).attr('id');
+		$('.ca-item-clickable').removeClass("ca-item-selected");
+		$(this).addClass("ca-item-selected");
+		var splitArray = currentId.split("-");
+		var cpt = splitArray.length;
+		var key=splitArray[cpt-1];
+		$('#peupleSelected').val(key);
 	});
 
 });
